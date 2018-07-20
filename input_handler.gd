@@ -7,7 +7,7 @@ var last_pos = 0
 var is_pressed = false
 
 func _ready():
-	get_node("LevelLabel").set_text("Nivel " + str(global.level))
+	get_node("LevelLabel").set_text("Level " + str(global.level))
 	set_process_input(true)
 	pass
 
