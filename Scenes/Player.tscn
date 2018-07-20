@@ -630,10 +630,14 @@ operator = 0
 params/radius = 3.67988
 params/attenuation = 1.0
 
-[node name="Decaler" type="Spatial" parent="RigidBody/Axis"]
+[node name="RayCast" type="RayCast" parent="RigidBody/Axis"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343418, 4.43101 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 3.37836 )
+enabled = true
+cast_to = Vector3( 0, -10000, 0 )
+layer_mask = 8
+type_mask = 1
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -679,6 +683,7 @@ stream/buffering_ms = 500
 "camera",
 ]]
 
+editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = true
 input/capture_on_drag = false

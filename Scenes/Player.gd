@@ -79,7 +79,7 @@ func lock_rot():
 func _on_set_rotation (rot):
 	if (!colliding):
 		axis.set_rotation(rotation + Vector3(0,rot,0))
-		camera_axis.set_rotation(rotation + Vector3(0,rot,0))
+		camera_axis.set_rotation(rotation + Vector3(0,rot,0))		
 		return true
 	else:
 		return false
@@ -89,37 +89,38 @@ func _on_set_rotation (rot):
 func _on_Area_body_enter(body):
 	light.set_enabled(false)
 	acceleration_sound.stop()
-	if (body.is_in_group("wall")):
-		colliding = true		
-	else:
-		meteor_particles.set_emitting(false)
-		rigid.set_gravity_scale(1)	
+
+	meteor_particles.set_emitting(false)
+	rigid.set_gravity_scale(1)	
+	
+	if (!meteor_charged):
+			meteor_charged = true
+	
+	if (body.is_in_group ("bad") && !meteor):
+		die()
+	else:		
+		if (meteor):
+			global.update_points(100)
+			global.update_progress()
+			body.get_parent().get_parent().get_parent().get_parent().meteorize()			
+			meteor_charged = false
+			big_splash.set_emitting(true)		
+		else:			
+			jump_sound.play(0)
+			var aux = decal.instance()
+			aux.rotate_z(rand_range(0, 360))
+			body.get_parent().add_child(aux)
+			var tr = aux.get_global_transform()
+			tr.origin = get_node("RigidBody/Axis/RayCast").get_collision_point()
+			aux.set_global_transform(tr)
+			aux.set_rotation(Vector3(0,0,0))
 		
-		if (!meteor_charged):
-				meteor_charged = true
-		
-		if (body.is_in_group ("bad") && !meteor):
-			die()
-		else:		
-			if (meteor):
-				global.update_points(100)
-				global.update_progress()
-				body.get_parent().get_parent().get_parent().get_parent().meteorize()			
-				meteor_charged = false
-				big_splash.set_emitting(true)		
-			else:
-				jump_sound.play(0)
-				var aux = decal.instance()						
-				aux.rotate_z(rand_range(0, 360))
-				body.get_parent().add_child(aux)
-				aux.set_global_transform(get_node("RigidBody/Axis/Decaler").get_global_transform())
-			
-			rigid.set_linear_velocity(Vector3(0,0,0))
-			rigid.apply_impulse(Vector3(0,0,0), Vector3(0,70,0))
-			splash.set_emitting(true)
-			animation.play("squeeze")
-			counter = 0
-			meteor = false
+		rigid.set_linear_velocity(Vector3(0,0,0))
+		rigid.apply_impulse(Vector3(0,0,0), Vector3(0,70,0))
+		splash.set_emitting(true)
+		animation.play("squeeze")
+		counter = 0
+		meteor = false
 	
 func _ready():
 	ball.set_material_override(global.mat_player)
