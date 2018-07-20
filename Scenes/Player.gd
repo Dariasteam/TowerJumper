@@ -13,6 +13,8 @@ onready var ball = get_node ("RigidBody/Axis/Group/Ball")
 onready var area = get_node ("RigidBody/Axis/Group/Area")
 onready var rigid_2 = get_node("RigidBody2")
 onready var light = get_node("RigidBody/Axis/Group/OmniLight")
+onready var left_ray = get_node("RigidBody/Axis/Group/Ball/LeftRay")
+onready var right_ray = get_node("RigidBody/Axis/Group/Ball/RightRay")
 
 onready var camera_axis = get_node ("RigidBody2/CameraAxis")
 
@@ -25,6 +27,7 @@ var colliding = false
 var decal = preload("res://Scenes/decal.tscn")
 
 onready var rotation = axis.get_rotation_deg()
+onready var last_safe_rotation = axis.get_rotation_deg()
 
 var counter = 0
 
@@ -71,19 +74,23 @@ func on_platform_passed():
 			meteorize()
 			
 	rigid_2.set_sleeping(false)
-	rigid_2.set_linear_velocity(rigid.get_linear_velocity())
+	rigid_2.set_linear_velocity(rigid.get_linear_velocity())	
 
-func lock_rot():	
+func lock_rot():
+	last_safe_rotation = axis.get_rotation()
 	rotation = axis.get_rotation()
 
 func _on_set_rotation (rot):
-	if (!colliding):
-		axis.set_rotation(rotation + Vector3(0,rot,0))
-		camera_axis.set_rotation(rotation + Vector3(0,rot,0))		
-		return true
-	else:
+	if ((rot < 0 and left_ray.is_colliding())) or ((rot > 0 and right_ray.is_colliding())):		
 		return false
-	
+	else:
+		axis.set_rotation(last_safe_rotation)
+		camera_axis.set_rotation(last_safe_rotation)
+		
+		axis.rotate(Vector3(0,1,0), -rot)
+		camera_axis.rotate(Vector3(0,1,0), -rot)
+				
+		return true
 
 		
 func _on_Area_body_enter(body):
@@ -105,6 +112,8 @@ func _on_Area_body_enter(body):
 			body.get_parent().get_parent().get_parent().get_parent().meteorize()			
 			meteor_charged = false
 			big_splash.set_emitting(true)		
+			rigid_2.set_linear_velocity(Vector3(0,0,0))
+			rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,100,0))
 		else:			
 			jump_sound.play(0)
 			var aux = decal.instance()

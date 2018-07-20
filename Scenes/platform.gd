@@ -27,6 +27,9 @@ func _ready():
 			aux = segment_movement.instance()
 			aux.set_translation(Vector3(0,rand_range(-0.01, 0.01), 0))
 			aux.set_material (global.mat_regular)
+		elif (rand >= 9):
+			aux = segment_tall.instance()			
+			aux.set_material (global.mat_regular)
 		elif (rand > 1):
 			aux = segment.instance()
 			aux.set_material (global.mat_regular)

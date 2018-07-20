@@ -31,11 +31,11 @@ tracks/0/keys = {
 "values": [ Vector3( 0.7, 0.4, 0.7 ), Vector3( 0.5, 1, 0.5 ) ]
 }
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=4]
 
 extents = Vector3( 0.171634, 0.185585, 0.128776 )
 
-[sub_resource type="CubeMap" id=4]
+[sub_resource type="CubeMap" id=5]
 
 flags = 7
 side/left = Image()
@@ -46,7 +46,7 @@ side/front = Image()
 side/back = Image()
 lossy_quality = 0.7
 
-[sub_resource type="Environment" id=5]
+[sub_resource type="Environment" id=6]
 
 ambient_light/enabled = true
 ambient_light/color = Color( 0.910156, 0.910156, 0.910156, 1 )
@@ -54,7 +54,7 @@ ambient_light/energy = 1.3
 fxaa/enabled = true
 background/mode = 2
 background/color = Color( 0.632843, 0.793165, 0.910156, 1 )
-background/cubemap = SubResource( 4 )
+background/cubemap = SubResource( 5 )
 background/energy = 1.0
 background/scale = 1.0
 background/glow = 10.0
@@ -608,6 +608,24 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
+[node name="LeftRay" type="RayCast" parent="RigidBody/Axis/Group/Ball"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0195243, 0, 0 )
+enabled = true
+cast_to = Vector3( -2, 0, 0 )
+layer_mask = 17
+type_mask = 1
+
+[node name="RightRay" type="RayCast" parent="RigidBody/Axis/Group/Ball"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0195243, 0, 0 )
+enabled = true
+cast_to = Vector3( 2, 0, 0 )
+layer_mask = 17
+type_mask = 1
+
 [node name="OmniLight" type="OmniLight" parent="RigidBody/Axis/Group"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -688,7 +706,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0782349, 0.0397879 )
 shapes/0/trigger = true
 collision/layers = 7
@@ -714,7 +732,7 @@ damp_override/angular = -1.0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0782349, 0.0397879 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 trigger = true
 _update_shape_index = 0
 
@@ -735,7 +753,7 @@ far = 100.0
 keep_aspect = 1
 current = true
 visible_layers = 1048575
-environment = SubResource( 5 )
+environment = SubResource( 6 )
 h_offset = 0.0
 v_offset = 0.0
 target = NodePath("../Ball")
