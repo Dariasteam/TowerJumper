@@ -5,9 +5,10 @@ const SEGMENTS = 16
 onready var offset = float(360) / SEGMENTS
 
 func _on_Area_body_enter( body ):
+	get_node("StreamPlayer").play(1)
 	disconnect("body_enter", self, "_on_Area_body_enter")
 	set_enable_monitoring(false)
-	get_node("Timer").start()			
+	get_node("Timer").start()	
 	for child in get_node("Children").get_children():
 		child.explode()
 	
@@ -21,6 +22,5 @@ func _ready():
 func meteorize():
 	pass
 
-func _on_Timer_timeout():
-	print ("asd")
+func _on_Timer_timeout():	
 	global.handl_win()

@@ -7,12 +7,14 @@ var last_pos = 0
 var is_pressed = false
 
 func _ready():
+	get_node("LevelLabel").set_text("Nivel " + str(global.level))
 	set_process_input(true)
 	pass
 
 func handle_pos (pos):	
-	game.receive_input (pos)
-	
+	if (!game.receive_input (pos)):
+		last_pos = get_local_mouse_pos().x
+		game.lock_rot();
 	
 func _input(event):	
 	if (event.type==InputEvent.SCREEN_DRAG):

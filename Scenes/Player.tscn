@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Materials/particle.tres" type="Material" id=2]
 [ext_resource path="res://Mesh/ball.msh" type="Mesh" id=3]
+[ext_resource path="res://Sound/jump.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sound/die.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sound/acceleration.ogg" type="AudioStream" id=6]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -28,17 +31,29 @@ tracks/0/keys = {
 "values": [ Vector3( 0.7, 0.4, 0.7 ), Vector3( 0.5, 1, 0.5 ) ]
 }
 
+[sub_resource type="CubeMap" id=5]
+
+flags = 7
+side/left = Image()
+side/right = Image()
+side/bottom = Image()
+side/top = Image()
+side/front = Image()
+side/back = Image()
+lossy_quality = 0.7
+
 [sub_resource type="Environment" id=4]
 
 ambient_light/enabled = true
 ambient_light/color = Color( 0.320312, 0.320312, 0.320312, 1 )
 ambient_light/energy = 1.0
 fxaa/enabled = false
-background/mode = 1
-background/color = Color( 0, 0, 0, 1 )
+background/mode = 2
+background/color = Color( 0.632843, 0.793165, 0.910156, 1 )
+background/cubemap = SubResource( 5 )
 background/energy = 1.0
 background/scale = 1.0
-background/glow = 0.0
+background/glow = 10.0
 background/canvas_max_layer = null
 glow/enabled = false
 glow/blur_passes = 1
@@ -76,7 +91,7 @@ srgb/enabled = false
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script/script = ExtResource( 1 )
-n_platforms_to_meteorize = 3
+n_platforms_to_meteorize = 2
 
 [node name="RigidBody" type="RigidBody" parent="."]
 
@@ -162,7 +177,7 @@ vars/linear_accel = 0.0
 vars/radial_accel = 0.0
 vars/tan_accel = 0.0
 vars/damping = 0.0
-vars/initial_size = 0.3
+vars/initial_size = 0.2
 vars/final_size = 0.0
 vars/initial_angle = 0.0
 vars/height_from_velocity = false
@@ -196,6 +211,7 @@ phase_3/color = Color( 0, 0, 0, 1 )
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 7.89294 )
+visibility/visible = false
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -226,6 +242,73 @@ vars/gravity = 0.0
 vars/linear_vel = 1.0
 vars/angular_vel = 0.0
 vars/linear_accel = 20.0
+vars/radial_accel = 0.0
+vars/tan_accel = 0.0
+vars/damping = 0.0
+vars/initial_size = 0.2
+vars/final_size = 0.0
+vars/initial_angle = 0.0
+vars/height_from_velocity = false
+vars/height = 1.0
+vars/height_speed_scale = 0.0
+rand/lifetime = 0.0
+rand/spread = 0.0
+rand/gravity = 0.0
+rand/linear_vel = 0.0
+rand/angular_vel = 0.0
+rand/linear_accel = 0.0
+rand/radial_accel = 0.0
+rand/tan_accel = 0.0
+rand/damping = 0.0
+rand/initial_size = 0.0
+rand/final_size = 0.0
+rand/initial_angle = 0.0
+rand/height = 0.0
+rand/height_speed_scale = 0.0
+color_phases/count = 0
+phase_0/pos = 0.0
+phase_0/color = Color( 1, 1, 1, 1 )
+phase_1/pos = 1.0
+phase_1/color = Color( 1, 1, 1, 1 )
+phase_2/pos = 1.0
+phase_2/color = Color( 0, 0, 0, 1 )
+phase_3/pos = 1.0
+phase_3/color = Color( 0, 0, 0, 1 )
+
+[node name="Die" type="Particles" parent="RigidBody/Axis/Group"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 7.89294 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = false
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = true
+geometry/billboard_y = true
+geometry/depth_scale = true
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+material = ExtResource( 2 )
+amount = 1000
+emitting = false
+visibility = AABB( -4, -4, -4, 8, 8, 8 )
+emission_extents = Vector3( 0, 0, 0 )
+emission_base_velocity = Vector3( 0, 0, 0 )
+emission_points = Vector3Array(  )
+gravity_normal = Vector3( 0, 0, 0 )
+local_coords = false
+emit_timeout = 0.2
+vars/lifetime = 1.0
+vars/spread = 10.0
+vars/gravity = 9.8
+vars/linear_vel = 4.0
+vars/angular_vel = 0.0
+vars/linear_accel = 50.0
 vars/radial_accel = 0.0
 vars/tan_accel = 0.0
 vars/damping = 0.0
@@ -468,7 +551,7 @@ input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Transform( 0.546756, 0, 0, 0, 0.546756, 0, 0, 0, 0.546756, 0, 0.275103, -0.108771 )
+shapes/0/transform = Transform( 0.363368, 0, 0, 0, 0.363368, 0, 0, 0, 0.363368, 0, -0.216982, -0.108771 )
 shapes/0/trigger = true
 space_override = 0
 gravity_point = false
@@ -477,7 +560,7 @@ gravity_vec = Vector3( 0, 0, 0 )
 gravity = 0.0
 linear_damp = 0.0
 angular_damp = 0.0
-priority = 1.0
+priority = 100.0
 monitoring = true
 monitorable = true
 collision/layers = 1
@@ -486,7 +569,7 @@ collision/mask = 1
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody/Axis/Group/Area"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.546756, 0, 0, 0, 0.546756, 0, 0, 0, 0.546756, 0, 0.275103, -0.108771 )
+transform/local = Transform( 0.363368, 0, 0, 0, 0.363368, 0, 0, 0, 0.363368, 0, -0.216982, -0.108771 )
 shape = SubResource( 2 )
 trigger = true
 _update_shape_index = 0
@@ -527,7 +610,7 @@ autoplay = ""
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="RigidBody/Axis/Group"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 2, 0, 0, 0, 1.87607, 0.693085, 0, -0.693085, 1.87607, 0.00406266, 3.99224, 33.9426 )
+transform/local = Transform( 2, 0, 0, 0, 1.7633, 0.943811, 0, -0.943811, 1.7633, 0.00406266, 7.16947, 33.9426 )
 projection = 0
 fov = 65.0
 near = 0.1
@@ -542,6 +625,50 @@ target = NodePath("../Ball")
 speed = 1.0
 enabled = false
 
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
+
+[node name="JumpSound" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 4 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 10.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="DieSound" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 5 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 11.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="AccelerationSound" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 6 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 10.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
 [connection signal="body_enter" from="RigidBody/Axis/Group/Area" to="." method="_on_Area_body_enter"]
+
+[connection signal="body_exit" from="RigidBody/Axis/Group/Area" to="." method="_on_Area_body_exit"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

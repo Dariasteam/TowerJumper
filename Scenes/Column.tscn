@@ -1,47 +1,10 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Scenes/Column.gd" type="Script" id=1]
 [ext_resource path="res://configs.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://platforms_deployer.gd" type="Script" id=4]
 [ext_resource path="res://Mesh/column.msh" type="Mesh" id=5]
-
-[sub_resource type="FixedMaterial" id=1]
-
-flags/visible = true
-flags/double_sided = false
-flags/invert_faces = false
-flags/unshaded = false
-flags/on_top = false
-flags/lightmap_on_uv2 = true
-flags/colarray_is_srgb = true
-params/blend_mode = 0
-params/depth_draw = 1
-params/line_width = 6.16571e-44
-fixed_flags/use_alpha = false
-fixed_flags/use_color_array = false
-fixed_flags/use_point_size = false
-fixed_flags/discard_alpha = false
-fixed_flags/use_xy_normalmap = false
-params/diffuse = Color( 1, 0.429688, 0.429688, 1 )
-params/specular = Color( 0, 0, 0, 1 )
-params/emission = Color( 0, 0, 0, 1 )
-params/specular_exp = 40
-params/detail_mix = 1.0
-params/normal_depth = 1
-params/shader = 2
-params/shader_param = 0.1
-params/glow = 0
-params/point_size = 1.0
-uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-textures/diffuse_tc = 0
-textures/detail_tc = 0
-textures/specular_tc = 0
-textures/emission_tc = 0
-textures/specular_exp_tc = 0
-textures/glow_tc = 0
-textures/normal_tc = 0
-textures/shade_param_tc = 0
 
 [node name="Spatial" type="Spatial"]
 
@@ -52,10 +15,10 @@ script/script = ExtResource( 1 )
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script/script = ExtResource( 2 )
-color_regular = Color( 1, 0.734375, 0.734375, 1 )
-color_bad = Color( 0.996094, 0.256805, 0.256805, 1 )
-color_column = Color( 1, 0.496094, 0.25, 1 )
-color_player = Color( 0.171875, 0.171875, 0.171875, 1 )
+color_regular = Color( 0.662304, 0.512939, 0.746094, 1 )
+color_bad = Color( 0.996094, 0.256805, 0.534039, 1 )
+color_column = Color( 0.612319, 0.220871, 0.753906, 1 )
+color_player = Color( 0.390375, 0.894531, 0.0454254, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
@@ -71,7 +34,7 @@ n_platforms = 30
 [node name="Column" type="MeshInstance" parent="Axis"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1.7, 0, 0, 0, 250, 0, 0, 0, 1.7, 0, -109.961, 0 )
+transform/local = Transform( 2.55, 0, 0, 0, 1, 0, 0, 0, 2.55, 0, -105, 0 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -88,7 +51,7 @@ geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
 mesh/mesh = ExtResource( 5 )
 mesh/skeleton = NodePath("..")
-material/0 = SubResource( 1 )
+material/0 = null
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 
@@ -98,7 +61,7 @@ layers = 1
 params/enabled = true
 params/editor_only = false
 params/bake_mode = 0
-params/energy = 0.5
+params/energy = 0.6
 colors/diffuse = Color( 1, 1, 1, 1 )
 colors/specular = Color( 1, 1, 1, 1 )
 shadow/shadow = false

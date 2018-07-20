@@ -7,14 +7,12 @@ func _ready():
 	set_process(true)
 
 func receive_input (rot):	
-	player._on_set_rotation (rot * 0.05)
+	return player._on_set_rotation (rot * 0.05)
 
 func lock_rot():
 	player.lock_rot()
 
-func _process(delta):	
-	#axis.set_rotation(Vector3(0,0.001,0))
-	
+func _process(delta):
 	if (Input.is_action_pressed("ui_left")):
 		player._on_set_rotation (-0.002)
 	elif (Input.is_action_pressed("ui_right")):

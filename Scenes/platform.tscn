@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scenes/platform.gd" type="Script" id=1]
+[ext_resource path="res://Sound/explosion.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Sound/big_explosion.ogg" type="AudioStream" id=3]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -20,7 +22,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+transform/local = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -0.934809, 0 )
 input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
@@ -46,6 +48,28 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="RegularExplosion" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 2 )
+stream/play = true
+stream/loop = false
+stream/volume_db = 10.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="BigExplosion" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 3 )
+stream/play = true
+stream/loop = false
+stream/volume_db = 10.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [connection signal="body_enter" from="Area" to="." method="_on_Area_body_enter"]
 

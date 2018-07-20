@@ -21,15 +21,11 @@ func _ready():
 		children.add_child(aux)	
 
 func explode():	
+	get_node("StreamPlayer").play(1)
 	area.queue_free()
 	for child in children.get_children():
 		child.explode()
-
-func meteorize():	
-	for child in children.get_children():
-		child.meteorize()
-	explode()
 	
 func _on_Area_body_enter( body ):
-	body.get_parent().on_platform_passed()
+	#body.get_parent().on_platform_passed()
 	explode()

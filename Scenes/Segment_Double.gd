@@ -1,14 +1,15 @@
 extends Spatial
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var velocity = 0
 
-func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
-
+func _ready():	
+	randomize()	
+	velocity = rand_range(-10,10)	
+	set_process(true)
+	
+func _process(delta):
+	rotate(Vector3(0,1,0), velocity * 0.0003)
+	
 func set_material(material):	
 	get_node("REGULAR").set_material_override(material)	
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scenes/end_line.gd" type="Script" id=1]
+[ext_resource path="res://Sound/Tlin.ogg" type="AudioStream" id=2]
 
 [sub_resource type="PlaneShape" id=1]
 
@@ -47,6 +48,17 @@ autostart = false
 [node name="Children" type="Spatial" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 2 )
+stream/play = true
+stream/loop = false
+stream/volume_db = 14.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [connection signal="body_enter" from="." to="." method="_on_Area_body_enter"]
 
