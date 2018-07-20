@@ -1,6 +1,6 @@
 extends Area
 
-var segment = preload ("res://Scenes/Segment.tscn")
+var segment = preload ("res://Scenes/Regular_Segment.tscn")
 const SEGMENTS = 16
 onready var offset = float(360) / SEGMENTS
 

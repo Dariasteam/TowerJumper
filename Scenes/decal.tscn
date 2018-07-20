@@ -44,7 +44,6 @@ textures/shade_param_tc = 0
 [node name="Quad" type="Quad"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, -2.8213e-07, 1, 0, -1, -2.8213e-07, 0, 0, 0 )
 layers = 1
 geometry/visible = true
 geometry/material_override = SubResource( 1 )
@@ -59,8 +58,8 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-quad/axis = 2
-quad/size = Vector2( 1, 1 )
+quad/axis = 1
+quad/size = Vector2( 2, 2 )
 quad/offset = Vector2( 0, 0 )
 quad/centered = true
 script/script = ExtResource( 2 )

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://Scenes/Segment_Double.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/segment.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Segment.tscn" type="PackedScene" id=2]
 
 [node name="Segment" type="Spatial"]

@@ -5,7 +5,7 @@ export(float) var velocity = 1
 onready var children = get_node("Children")
 onready var area = get_node("Area")
 
-var segment = preload ("res://Scenes/Segment.tscn")
+var segment = preload ("res://Scenes/Regular_Segment.tscn")
 
 const SEGMENTS = 16
 onready var offset = float(360) / SEGMENTS

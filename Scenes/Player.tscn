@@ -213,7 +213,6 @@ phase_3/color = Color( 0, 0, 0, 1 )
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 7.89294 )
-visibility/visible = false
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -553,7 +552,7 @@ input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Transform( 0.141244, 0, 0, 0, 0.141244, 0, 0, 0, 0.141244, 0, -0.529141, -0.108771 )
+shapes/0/transform = Transform( 0.141244, 0, 0, 0, 0.141244, 0, 0, 0, 0.141244, 0, -0.699307, -0.108771 )
 shapes/0/trigger = true
 space_override = 0
 gravity_point = false
@@ -571,7 +570,7 @@ collision/mask = 3
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody/Axis/Group/Area"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.141244, 0, 0, 0, 0.141244, 0, 0, 0, 0.141244, 0, -0.529141, -0.108771 )
+transform/local = Transform( 0.141244, 0, 0, 0, 0.141244, 0, 0, 0, 0.141244, 0, -0.699307, -0.108771 )
 shape = SubResource( 2 )
 trigger = true
 _update_shape_index = 0
@@ -630,6 +629,11 @@ projector = null
 operator = 0
 params/radius = 3.67988
 params/attenuation = 1.0
+
+[node name="Decaler" type="Spatial" parent="RigidBody/Axis"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343418, 4.43101 )
 
 [node name="Timer" type="Timer" parent="."]
 

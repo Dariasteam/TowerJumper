@@ -5,7 +5,7 @@ export(float) var velocity = 1
 onready var children = get_node("Children")
 onready var area = get_node("Area")
 
-var segment = preload ("res://Scenes/Segment.tscn")
+var segment = preload ("res://Scenes/Regular_Segment.tscn")
 var segment_tall = preload ("res://Scenes/Segment_Tall.tscn")
 var segment_movement = preload ("res://Scenes/Segment_Double.tscn")
 

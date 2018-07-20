@@ -109,10 +109,10 @@ func _on_Area_body_enter(body):
 				big_splash.set_emitting(true)		
 			else:
 				jump_sound.play(0)
-				var aux = decal.instance()		
-				aux.set_translation(Vector3(-1.5, 0.01,-0.5))						
+				var aux = decal.instance()						
 				aux.rotate_z(rand_range(0, 360))
-				body.add_child(aux)
+				body.get_parent().add_child(aux)
+				aux.set_global_transform(get_node("RigidBody/Axis/Decaler").get_global_transform())
 			
 			rigid.set_linear_velocity(Vector3(0,0,0))
 			rigid.apply_impulse(Vector3(0,0,0), Vector3(0,70,0))
