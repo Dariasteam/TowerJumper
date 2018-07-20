@@ -44,7 +44,7 @@ textures/shade_param_tc = 0
 [node name="Quad" type="Quad"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 4.88762e-07, 1, 0, -1, 4.88762e-07, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, -2.8213e-07, 1, 0, -1, -2.8213e-07, 0, 0, 0 )
 layers = 1
 geometry/visible = true
 geometry/material_override = SubResource( 1 )
