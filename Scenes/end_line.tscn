@@ -7,7 +7,9 @@
 
 plane = Plane( 0, 1, 0, 0 )
 
-[node name="Area" type="Area"]
+[node name="Area" type="Area" groups=[
+"end_line",
+]]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = false

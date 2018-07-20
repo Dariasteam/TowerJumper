@@ -608,24 +608,6 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="LeftRay" type="RayCast" parent="RigidBody/Axis/Group/Ball"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0195243, 0, 0 )
-enabled = true
-cast_to = Vector3( -2, 0, 0 )
-layer_mask = 17
-type_mask = 1
-
-[node name="RightRay" type="RayCast" parent="RigidBody/Axis/Group/Ball"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0195243, 0, 0 )
-enabled = true
-cast_to = Vector3( 2, 0, 0 )
-layer_mask = 17
-type_mask = 1
-
 [node name="OmniLight" type="OmniLight" parent="RigidBody/Axis/Group"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -655,6 +637,24 @@ transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 3.37836 )
 enabled = true
 cast_to = Vector3( 0, -10000, 0 )
 layer_mask = 8
+type_mask = 1
+
+[node name="LeftRay" type="RayCast" parent="RigidBody/Axis"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.308333, 0, 0, 0, 0.325, 0, 0, 0, 0.308333, -0.00602001, 0, 4.38454 )
+enabled = true
+cast_to = Vector3( -3, 0, 0 )
+layer_mask = 17
+type_mask = 1
+
+[node name="RightRay" type="RayCast" parent="RigidBody/Axis"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.308333, 0, 0, 0, 0.325, 0, 0, 0, 0.308333, -0.00602001, 0, 4.38454 )
+enabled = true
+cast_to = Vector3( 3, 0, 0 )
+layer_mask = 17
 type_mask = 1
 
 [node name="Timer" type="Timer" parent="."]

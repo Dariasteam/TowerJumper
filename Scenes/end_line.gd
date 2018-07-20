@@ -4,7 +4,7 @@ var segment = preload ("res://Scenes/Regular_Segment.tscn")
 const SEGMENTS = 16
 onready var offset = float(360) / SEGMENTS
 
-func _on_Area_body_enter( body ):	
+func _on_Area_body_enter( body ):
 	get_node("StreamPlayer").play(1)
 	disconnect("body_enter", self, "_on_Area_body_enter")
 	set_enable_monitoring(false)

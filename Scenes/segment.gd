@@ -16,7 +16,9 @@ func set_bad():
 	get_node("REGULAR/StaticBody").add_to_group("bad")
 	
 func explode():	
+	get_node("REGULAR/StaticBody").queue_free()
 	get_node("REGULAR/AnimationPlayer").play("explode")
 
 func meteorize():	
+	get_node("REGULAR/StaticBody").queue_free()
 	get_node("REGULAR").set_material_override(global.mat_player)	

@@ -13,8 +13,8 @@ onready var ball = get_node ("RigidBody/Axis/Group/Ball")
 onready var area = get_node ("RigidBody/Axis/Group/Area")
 onready var rigid_2 = get_node("RigidBody2")
 onready var light = get_node("RigidBody/Axis/Group/OmniLight")
-onready var left_ray = get_node("RigidBody/Axis/Group/Ball/LeftRay")
-onready var right_ray = get_node("RigidBody/Axis/Group/Ball/RightRay")
+onready var left_ray = get_node("RigidBody/Axis/LeftRay")
+onready var right_ray = get_node("RigidBody/Axis/RightRay")
 
 onready var camera_axis = get_node ("RigidBody2/CameraAxis")
 
@@ -105,7 +105,7 @@ func _on_Area_body_enter(body):
 	
 	if (body.is_in_group ("bad") && !meteor):
 		die()
-	else:		
+	else:
 		if (meteor):
 			global.update_points(100)
 			global.update_progress()

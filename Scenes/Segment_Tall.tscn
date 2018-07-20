@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": FloatArray( 0, 1 ),
 "transitions": FloatArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, -0.5, 0 ), Vector3( -15.3575, 5.34204, 9.37751 ) ]
+"values": [ Vector3( 0, 2.98308, 0 ), Vector3( -15.3575, 5.34204, 9.37751 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:transform/rotation")
@@ -37,7 +37,7 @@ tracks/2/keys = {
 "times": FloatArray( 0, 1 ),
 "transitions": FloatArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 2, 1.2, 2 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 2, 14, 2 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/3/type = "method"
 tracks/3/path = NodePath(".")
@@ -74,7 +74,7 @@ script/script = ExtResource( 1 )
 [node name="REGULAR" type="MeshInstance" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 2, 0, 0, 0, 10, 0, 0, 0, 2, 0, 2.40542, 0 )
+transform/local = Transform( 2, 0, 0, 0, 14, 0, 0, 0, 2, 0, 2.98308, 0 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null

@@ -15,6 +15,7 @@ onready var offset = float(360) / SEGMENTS
 func _ready():
 	randomize()
 	var angle_offset = (randi() % 360 + 1)
+	var cant_move = false
 	for i in range(0, 14):		
 		var aux = null
 		var rand = (randi()%20+1)
@@ -27,7 +28,8 @@ func _ready():
 			aux = segment_movement.instance()
 			aux.set_translation(Vector3(0,rand_range(-0.01, 0.01), 0))
 			aux.set_material (global.mat_regular)
-		elif (rand >= 9):
+		elif (rand == 15 and !cant_move):
+			cant_move = true
 			aux = segment_tall.instance()			
 			aux.set_material (global.mat_regular)
 		elif (rand > 1):
@@ -39,13 +41,14 @@ func _ready():
 			aux.rotate_y(deg2rad((offset * i) + angle_offset))			
 			children.add_child(aux)
 	
-	var rand = (randi()%4)
-	if (rand < 1):
-		randomize()
-		rand = rand_range(-5,5)
-		if (abs(rand) > 2):
-			velocity = rand
-			set_process(true)
+	if (!cant_move):
+		var rand = (randi()%4)
+		if (rand < 1):
+			randomize()
+			rand = rand_range(-5,5)
+			if (abs(rand) > 2):
+				velocity = rand
+				set_process(true)
 	
 func _process(delta):
 	rotate(Vector3(0,1,0), velocity * 0.0003)
