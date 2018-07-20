@@ -11,14 +11,13 @@ const SEGMENTS = 16
 onready var offset = float(360) / SEGMENTS
 
 func _ready():	
-	
-	var angle_offset = (randi() % 360 + 1)
-	for i in range(0, 14):							
+		
+	for i in range(0, 14):
 		var aux = segment.instance()
 		aux.set_material (global.mat_regular)
 			
-		aux.rotate_y(deg2rad((offset * i) + angle_offset))
-		children.add_child(aux)	
+		aux.rotate_y(deg2rad((offset * i)))
+		children.add_child(aux)
 
 func explode():	
 	get_node("StreamPlayer").play(1)
@@ -27,5 +26,9 @@ func explode():
 		child.explode()
 	
 func _on_Area_body_enter( body ):
-	#body.get_parent().on_platform_passed()
-	explode()
+	if (!body.is_in_group("camera")):
+		body.get_parent().on_platform_passed()
+		explode()
+	else:
+		body.set_sleeping(true)
+	

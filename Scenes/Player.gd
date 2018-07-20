@@ -11,6 +11,9 @@ onready var animation = get_node("RigidBody/Axis/Group/Ball/AnimationPlayer")
 onready var axis = get_node ("RigidBody/Axis")
 onready var ball = get_node ("RigidBody/Axis/Group/Ball")
 onready var area = get_node ("RigidBody/Axis/Group/Area")
+onready var rigid_2 = get_node("RigidBody2")
+
+onready var camera_axis = get_node ("RigidBody2/CameraAxis")
 
 onready var jump_sound = get_node("JumpSound")
 onready var die_sound = get_node("DieSound")
@@ -34,17 +37,16 @@ func die():
 	die_particles.set_emitting(true)
 	ball.queue_free()
 	area.queue_free()
-	rigid.set_gravity_scale(0)
+	rigid.set_gravity_scale(0)	
 	rigid.set_linear_velocity(Vector3(0,0,0))
+	rigid.set_sleeping(true)
 	trail.set_emitting(false)
-	idle_particles.set_emitting(false)
-	
-	
+	idle_particles.set_emitting(false)	
+	rigid_2.set_sleeping(true)
 	rigid.set_linear_velocity(Vector3(0,0,0))
 	get_node("Timer").start()
 	
-
-func on_platform_passed():	
+func on_platform_passed():			
 	global.update_points((counter + 1) * 10)
 	global.update_progress()
 	
@@ -58,7 +60,10 @@ func on_platform_passed():
 	if (counter >= n_platforms_to_meteorize):		
 		meteor_particles.set_emitting(true)		
 		if (meteor_charged):
-			meteorize()	
+			meteorize()
+			
+	rigid_2.set_sleeping(false)
+	rigid_2.set_linear_velocity(rigid.get_linear_velocity())
 
 func lock_rot():	
 	rotation = axis.get_rotation()
@@ -66,12 +71,14 @@ func lock_rot():
 func _on_set_rotation (rot):
 	if (!colliding):
 		axis.set_rotation(rotation + Vector3(0,rot,0))
+		camera_axis.set_rotation(rotation + Vector3(0,rot,0))
 		return true
 	else:
 		return false
 	
+
 		
-func _on_Area_body_enter(body):	
+func _on_Area_body_enter(body):
 	acceleration_sound.stop()
 	if (body.is_in_group("wall")):
 		colliding = true		
@@ -98,7 +105,7 @@ func _on_Area_body_enter(body):
 				aux.rotate_z(rand_range(0, 360))
 				body.add_child(aux)
 	
-			rigid.set_linear_velocity(Vector3(0,0,0))		
+			rigid.set_linear_velocity(Vector3(0,0,0))
 			rigid.apply_impulse(Vector3(0,0,0), Vector3(0,70,0))
 			splash.set_emitting(true)
 			animation.play("squeeze")
@@ -120,3 +127,5 @@ func _on_Timer_timeout():
 
 func _on_Area_body_exit( body ):
 	colliding = false
+
+

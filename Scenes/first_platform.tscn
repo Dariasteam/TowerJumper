@@ -38,8 +38,8 @@ angular_damp = 1.0
 priority = 0.0
 monitoring = true
 monitorable = true
-collision/layers = 1
-collision/mask = 1
+collision/layers = 5
+collision/mask = 5
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 

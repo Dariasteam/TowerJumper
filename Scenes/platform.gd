@@ -25,15 +25,15 @@ func _ready():
 			aux.set_material (global.mat_bad)
 		elif (rand >= 16):
 			aux = segment_movement.instance()
-			aux.set_material (global.mat_regular)			
+			aux.set_translation(Vector3(0,rand_range(-0.01, 0.01), 0))
+			aux.set_material (global.mat_regular)
 		elif (rand > 1):
 			aux = segment.instance()
 			aux.set_material (global.mat_regular)
 			
 		
 		if (aux != null):
-			aux.rotate_y(deg2rad((offset * i) + angle_offset))
-			aux.set_translation(Vector3(0,rand_range(-0.01, 0.01), 0))
+			aux.rotate_y(deg2rad((offset * i) + angle_offset))			
 			children.add_child(aux)
 	
 	var rand = (randi()%4)
@@ -60,5 +60,8 @@ func meteorize():
 	explode()
 	
 func _on_Area_body_enter( body ):
-	body.get_parent().on_platform_passed()
-	explode()
+	if (!body.is_in_group("camera")):
+		body.get_parent().on_platform_passed()
+		explode()
+	else:
+		body.set_sleeping(true)

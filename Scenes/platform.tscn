@@ -22,7 +22,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -0.934809, 0 )
+transform/local = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -0.987758, 0 )
 input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
@@ -39,8 +39,8 @@ angular_damp = 1.0
 priority = 0.0
 monitoring = true
 monitorable = true
-collision/layers = 1
-collision/mask = 1
+collision/layers = 4
+collision/mask = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 
