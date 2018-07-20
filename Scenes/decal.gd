@@ -1,0 +1,14 @@
+extends Quad
+
+# class member variables go here, for example:
+# var a = 2
+# var b = "textvar"
+
+func _ready():
+	var color = global.mat_player.get_parameter(FixedMaterial.PARAM_DIFFUSE)	
+	get_material_override().set_parameter(FixedMaterial.PARAM_DIFFUSE, color)
+	pass
+
+
+func _on_Timer_timeout():
+	queue_free()
