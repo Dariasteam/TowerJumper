@@ -36,7 +36,7 @@ export (int) var n_platforms_to_meteorize = 2
 var meteor_charged = true
 var meteor = false
 
-func die():	
+func die():
 	rigid.set_gravity_scale(0)
 	rigid_2.set_gravity_scale(0)
 	rigid_2.set_linear_velocity(Vector3(0,0,0))
@@ -47,14 +47,12 @@ func die():
 	die_sound.play(0)
 	die_particles.set_emitting(true)
 	ball.queue_free()
-	area.queue_free()
-	rigid.set_gravity_scale(0)	
+	area.queue_free()	
 	
 	
 	trail.set_emitting(false)
 	idle_particles.set_emitting(false)		
 	get_node("Timer").start()
-	
 	
 
 func on_platform_passed():			
@@ -65,7 +63,7 @@ func on_platform_passed():
 		acceleration_sound.play(2)
 	
 	counter += 1
-	if (counter == n_platforms_to_meteorize - 1):		
+	if (counter == n_platforms_to_meteorize - 1):
 		rigid.set_gravity_scale(0)
 	
 	if (counter >= n_platforms_to_meteorize):				
@@ -93,10 +91,12 @@ func _on_set_rotation (rot):
 		return true
 
 func end_animation():
+	ball.queue_free()
 	rigid.set_linear_velocity(Vector3(0,0,0))
-	rigid.apply_impulse(Vector3(0,0,0), Vector3(0,70,0))
+	rigid.set_gravity_scale(0)
 	rigid_2.set_linear_velocity(Vector3(0,0,0))
-	rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,100,0))
+	rigid_2.set_gravity_scale(0)
+	die_particles.set_emitting(true)
 	
 		
 func _on_Area_body_enter(body):
@@ -150,7 +150,6 @@ func meteorize():
 
 func _on_Timer_timeout():
 	global.handle_lose()
-
 
 func _on_Area_body_exit( body ):
 	colliding = false

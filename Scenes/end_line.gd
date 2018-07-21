@@ -6,6 +6,7 @@ onready var offset = float(360) / SEGMENTS
 
 func _on_Area_body_enter( body ):
 	body.get_parent().end_animation()
+	
 	get_node("StreamPlayer").play(1)
 	disconnect("body_enter", self, "_on_Area_body_enter")
 	set_enable_monitoring(false)

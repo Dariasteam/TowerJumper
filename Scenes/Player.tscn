@@ -104,7 +104,7 @@ input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717783, 0 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42167, 0 )
 shapes/0/trigger = true
 collision/layers = 5
 collision/mask = 5
@@ -128,7 +128,7 @@ damp_override/angular = -1.0
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717783, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42167, 0 )
 shape = SubResource( 1 )
 trigger = true
 _update_shape_index = 0
