@@ -92,6 +92,12 @@ func _on_set_rotation (rot):
 				
 		return true
 
+func end_animation():
+	rigid.set_linear_velocity(Vector3(0,0,0))
+	rigid.apply_impulse(Vector3(0,0,0), Vector3(0,70,0))
+	rigid_2.set_linear_velocity(Vector3(0,0,0))
+	rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,100,0))
+	
 		
 func _on_Area_body_enter(body):
 	light.set_enabled(false)
@@ -116,13 +122,13 @@ func _on_Area_body_enter(body):
 			rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,100,0))
 		else:			
 			jump_sound.play(0)
-			var aux = decal.instance()
-			aux.rotate_z(rand_range(0, 360))
+			var aux = decal.instance()			
 			body.get_parent().add_child(aux)
 			var tr = aux.get_global_transform()
-			tr.origin = get_node("RigidBody/Axis/RayCast").get_collision_point()
-			aux.set_global_transform(tr)
-			aux.set_rotation(Vector3(0,0,0))
+			tr.origin = get_node("RigidBody/Axis/RayCast").get_collision_point()			
+			aux.set_global_transform(tr)			
+			aux.rotate_y(rand_range(0, 360))
+			aux.translate(Vector3(0,0.0001,0))
 		
 		rigid.set_linear_velocity(Vector3(0,0,0))
 		rigid.apply_impulse(Vector3(0,0,0), Vector3(0,70,0))
