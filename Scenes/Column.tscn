@@ -25,6 +25,7 @@ color_power_up_1 = Color( 0.179443, 0.74521, 0.820312, 1 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.27751, 0 )
+n_platforms_to_meteorize = 3
 
 [node name="Axis" type="Spatial" parent="."]
 

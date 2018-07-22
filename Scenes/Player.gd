@@ -32,7 +32,7 @@ var counter = 0
 var rotation_range = Vector2(0,0)
 var movement_limited = false
 
-export (int) var n_platforms_to_meteorize = 2
+export (int) var n_platforms_to_meteorize = 3
 
 var meteor_charged = true
 var meteor = false
@@ -153,6 +153,8 @@ func end_animation():
 	
 		
 func _on_Area_body_enter(body):
+	rigid.set_linear_velocity(Vector3(0,0,0))
+
 	light.set_enabled(false)
 	acceleration_sound.stop()
 
@@ -163,6 +165,7 @@ func _on_Area_body_enter(body):
 			meteor_charged = true
 	
 	if (body.is_in_group ("bad") && !meteor):
+		print ("SD")
 		die()
 	else:
 		if (meteor):
@@ -171,8 +174,7 @@ func _on_Area_body_enter(body):
 			global.update_progress()
 			body.get_parent().get_parent().get_parent().get_parent().meteorize()			
 			meteor_charged = false
-			big_splash.set_emitting(true)		
-			rigid_2.set_linear_velocity(Vector3(0,0,0))
+			big_splash.set_emitting(true)					
 			rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,100,0))
 		else:			
 			jump_sound.play(0)
@@ -183,9 +185,8 @@ func _on_Area_body_enter(body):
 			aux.set_global_transform(tr)			
 			aux.rotate_y(rand_range(0, 360))
 			aux.translate(Vector3(0,0.0001,0))
+				
 		
-		
-		rigid.set_linear_velocity(Vector3(0,0,0))
 		rigid.apply_impulse(Vector3(0,0,0), Vector3(0,70,0))
 		splash.set_emitting(true)
 		animation.play("squeeze")

@@ -5,7 +5,7 @@ onready var notifier = preload("res://Scenes/PointNotification.tscn")
 
 func _ready():
 	global.connect("update_points_viewer", self, "update_points")
-	
+	total_points.set_text(str(global.total_points))
 	pass
 
 func update_points(points):

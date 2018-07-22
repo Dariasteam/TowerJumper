@@ -21,15 +21,13 @@ signal update_progress
 
 
 func handl_win():	
-	level += 1
-	total_points = 0
+	level += 1	
 	progress = 0
 	save_game()
 	get_tree().change_scene("res://Scenes/Input_Handler.tscn")
 	
 func handle_lose():
-	save_game()
-	total_points = 0
+	save_game()	
 	progress = 0
 	get_tree().change_scene("res://Scenes/Input_Handler.tscn")
 	

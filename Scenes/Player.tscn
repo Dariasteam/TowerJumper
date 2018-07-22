@@ -28,7 +28,7 @@ tracks/0/keys = {
 "times": FloatArray( 0, 1.2 ),
 "transitions": FloatArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0.7, 0.4, 0.7 ), Vector3( 0.5, 1, 0.5 ) ]
+"values": [ Vector3( 0.7, 0.5, 0.7 ), Vector3( 0.6, 1.1, 0.6 ) ]
 }
 
 [sub_resource type="BoxShape" id=4]
@@ -97,7 +97,7 @@ srgb/enabled = false
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script/script = ExtResource( 1 )
-n_platforms_to_meteorize = 2
+n_platforms_to_meteorize = 3
 
 [node name="RigidBody" type="RigidBody" parent="."]
 
@@ -554,7 +554,7 @@ input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Transform( 0.0473541, 0, 0, 0, 0.0473541, 0, 0, 0, 0.0473541, 0, -0.591405, -0.108771 )
+shapes/0/transform = Transform( 0.019017, 0, 0, 0, 0.019017, 0, 0, 0, 0.019017, 0, -0.594566, -0.108771 )
 shapes/0/trigger = true
 space_override = 0
 gravity_point = false
@@ -572,7 +572,7 @@ collision/mask = 3
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody/Axis/Group/Area"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.0473541, 0, 0, 0, 0.0473541, 0, 0, 0, 0.0473541, 0, -0.591405, -0.108771 )
+transform/local = Transform( 0.019017, 0, 0, 0, 0.019017, 0, 0, 0, 0.019017, 0, -0.594566, -0.108771 )
 shape = SubResource( 2 )
 trigger = true
 _update_shape_index = 0
@@ -580,7 +580,7 @@ _update_shape_index = 0
 [node name="Ball" type="MeshInstance" parent="RigidBody/Axis/Group"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.616667, 0, 0, 0, 0.65, 0, 0, 0, 0.616667, 0, 0, 7.95683 )
+transform/local = Transform( 0.675, 0, 0, 0, 0.65, 0, 0, 0, 0.675, 0, 0, 7.95683 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -606,7 +606,7 @@ playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/squeeze = SubResource( 3 )
 playback/active = true
-playback/speed = 1.0
+playback/speed = 1.1
 blend_times = [  ]
 autoplay = ""
 
