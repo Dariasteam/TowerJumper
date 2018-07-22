@@ -7,7 +7,7 @@ func _ready():
 	set_process(true)
 
 func receive_input (rot):	
-	return player._on_set_rotation (rot * 2)
+	return player._on_set_rotation (rot * 3)
 
 func lock_rot():
 	player.lock_rot()

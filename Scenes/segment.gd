@@ -10,7 +10,8 @@ func _ready():
 	pass
 
 func set_material(material):	
-	get_node("REGULAR").set_material_override(material)	
+	get_node("REGULAR").set_material_override(material)
+	get_node("REGULAR/Cover").set_material_override(material)
 
 func set_bad():
 	get_node("REGULAR/StaticBody").add_to_group("bad")
