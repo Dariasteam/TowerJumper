@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Scenes/Column.gd" type="Script" id=1]
 [ext_resource path="res://configs.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://platforms_deployer.gd" type="Script" id=4]
 [ext_resource path="res://Mesh/column.msh" type="Mesh" id=5]
+[ext_resource path="res://Scenes/PowerUP.tscn" type="PackedScene" id=6]
 
 [node name="Spatial" type="Spatial"]
 
@@ -19,6 +20,7 @@ color_regular = Color( 0.662304, 0.512939, 0.746094, 1 )
 color_bad = Color( 0.996094, 0.256805, 0.534039, 1 )
 color_column = Color( 0.612319, 0.220871, 0.753906, 1 )
 color_player = Color( 0.390375, 0.894531, 0.0454254, 1 )
+color_power_up_1 = Color( 0.179443, 0.74521, 0.820312, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
@@ -76,5 +78,9 @@ shadow/mode = 1
 shadow/max_distance = 0.0
 shadow/split_weight = 0.5
 shadow/zoffset_scale = 2.0
+
+[node name="Spatial" parent="." instance=ExtResource( 6 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83688, 0, 2.56991 )
 
 

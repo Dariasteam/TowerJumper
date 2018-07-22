@@ -16,7 +16,10 @@
    version="1.1"
    id="svg8"
    sodipodi:docname="icon.svg"
-   inkscape:version="0.92.2 2405546, 2018-03-11">
+   inkscape:version="0.92.2 2405546, 2018-03-11"
+   inkscape:export-filename="/home/darias/bitmap.png"
+   inkscape:export-xdpi="571"
+   inkscape:export-ydpi="571">
   <defs
      id="defs2">
     <linearGradient
@@ -25,11 +28,11 @@
       <stop
          id="stop4280"
          offset="0"
-         style="stop-color:#42cfb6;stop-opacity:1;" />
+         style="stop-color:#4277b6;stop-opacity:1" />
       <stop
          id="stop4282"
          offset="1"
-         style="stop-color:#ffffff;stop-opacity:1" />
+         style="stop-color:#d7ffff;stop-opacity:1" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -653,7 +656,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6568543"
-     inkscape:cx="410.39269"
+     inkscape:cx="406.15005"
      inkscape:cy="410.67943"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"

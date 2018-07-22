@@ -17,8 +17,9 @@ velocity = 0.0
 [node name="Children" type="Spatial" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
 
-[node name="Area" type="Area" parent="."]
+[node name="Deleter" type="Area" parent="."]
 
 editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -42,7 +43,38 @@ monitorable = true
 collision/layers = 4
 collision/mask = 4
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
+[node name="CollisionShape" type="CollisionShape" parent="Deleter"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Init" type="Area" parent="."]
+
+editor/display_folded = true
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 3.09495, 0 )
+input/ray_pickable = false
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shapes/0/trigger = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, 0, 0 )
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision/layers = 4
+collision/mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="Init"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 1 )
@@ -71,6 +103,8 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
-[connection signal="body_enter" from="Area" to="." method="_on_Area_body_enter"]
+[connection signal="body_enter" from="Deleter" to="." method="_on_Deleter_body_enter"]
+
+[connection signal="body_enter" from="Init" to="." method="_on_Init_body_enter"]
 
 

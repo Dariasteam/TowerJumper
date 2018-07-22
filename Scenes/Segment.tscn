@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": FloatArray( 0, 1 ),
 "transitions": FloatArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, -0.5, 0 ), Vector3( -15.3575, 5.34204, 9.37751 ) ]
+"values": [ Vector3( 0, -0.5, 0 ), Vector3( 4.73208, 5.34204, -14.14 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:transform/rotation")
@@ -26,7 +26,7 @@ tracks/1/keys = {
 "times": FloatArray( 0, 1 ),
 "transitions": FloatArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 180, 0 ), Vector3( 51.5461, -25.6446, 37.2038 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 51.5461, -25.6446, 37.2038 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:transform/scale")
@@ -68,7 +68,7 @@ points = Vector3Array( 0.3463, 0.2601, -2.6304, 0.3463, -0.2601, -2.6304, 0.6867
 [node name="REGULAR" type="MeshInstance"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( -2, 0, -1.12852e-06, 0, 1.2, 0, 1.12852e-06, 0, -2, 0, -0.5, 0 )
+transform/local = Transform( 2, 0, 0, 0, 1.2, 0, 0, 0, 2, 0, -0.5, 0 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -101,7 +101,7 @@ autoplay = ""
 [node name="StaticBody" type="StaticBody" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 2 )

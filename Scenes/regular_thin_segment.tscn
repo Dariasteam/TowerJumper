@@ -7,7 +7,7 @@
 
 points = Vector3Array( -0.3827, 0, 0.9239, 0, 0, 0, -0.7071, 0, 0.7071, -0.3827, 0.4964, 0.9239, -0.7071, 0.4964, 0.7071, 0, 0.4964, 0, 0, 0, 0, -0.3827, 0, 0.9239, -0.3827, 0.4964, 0.9239, 0, 0.4964, 0, -0.7071, 0, 0.7071, 0, 0, 0, 0, 0.4964, 0, -0.7071, 0.4964, 0.7071, -0.3827, 0, 0.9239, -0.7071, 0, 0.7071, -0.7071, 0.4964, 0.7071, -0.3827, 0.4964, 0.9239 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 resource/name = "explode"
 length = 1.0
@@ -117,7 +117,7 @@ _update_shape_index = 0
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/explode = SubResource( 3 )
+anims/explode = SubResource( 2 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

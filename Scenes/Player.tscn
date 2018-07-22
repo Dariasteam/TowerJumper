@@ -91,7 +91,9 @@ bcs/contrast = 1.0
 bcs/saturation = 1.0
 srgb/enabled = false
 
-[node name="Spatial" type="Spatial"]
+[node name="Spatial" type="Spatial" groups=[
+"player",
+]]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script/script = ExtResource( 1 )
@@ -135,10 +137,12 @@ _update_shape_index = 0
 
 [node name="Axis" type="Spatial" parent="RigidBody"]
 
+editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Group" type="Spatial" parent="RigidBody/Axis"]
 
+editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.406123 )
 
@@ -630,31 +634,13 @@ operator = 0
 params/radius = 3.67988
 params/attenuation = 1.0
 
-[node name="RayCast" type="RayCast" parent="RigidBody/Axis"]
+[node name="DecalRayCast" type="RayCast" parent="RigidBody/Axis"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 3.37836 )
 enabled = true
 cast_to = Vector3( 0, -10000, 0 )
 layer_mask = 8
-type_mask = 1
-
-[node name="LeftRay" type="RayCast" parent="RigidBody/Axis"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.308333, 0, 0, 0, 0.325, 0, 0, 0, 0.308333, -0.00602001, 0, 4.38454 )
-enabled = true
-cast_to = Vector3( -3, 0, 0 )
-layer_mask = 17
-type_mask = 1
-
-[node name="RightRay" type="RayCast" parent="RigidBody/Axis"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.308333, 0, 0, 0, 0.325, 0, 0, 0, 0.308333, -0.00602001, 0, 4.38454 )
-enabled = true
-cast_to = Vector3( 3, 0, 0 )
-layer_mask = 17
 type_mask = 1
 
 [node name="Timer" type="Timer" parent="."]

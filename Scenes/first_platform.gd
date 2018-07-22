@@ -16,7 +16,7 @@ func _ready():
 		var aux = segment.instance()
 		aux.set_material (global.mat_regular)
 			
-		aux.rotate_y(deg2rad((offset * i) + 180))
+		aux.rotate_y(deg2rad(offset * i))
 		children.add_child(aux)
 
 func explode():	

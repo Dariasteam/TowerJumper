@@ -5,7 +5,7 @@ extends Quad
 # var b = "textvar"
 
 func _ready():
-	var color = global.mat_player.get_parameter(FixedMaterial.PARAM_DIFFUSE)	
+	var color = get_tree().get_nodes_in_group("player")[0].color
 	get_material_override().set_parameter(FixedMaterial.PARAM_DIFFUSE, color)
 	pass
 

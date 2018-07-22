@@ -4,6 +4,13 @@ var mat_bad
 var mat_regular
 var mat_column
 var mat_player
+var mat_power_up_1
+
+var player
+
+var player_color = []
+var decal_materials = []
+
 var total_points = 0
 var progress = 0
 var level_size = 29
@@ -11,6 +18,7 @@ var level = 0
 
 signal update_points_viewer
 signal update_progress
+
 
 func handl_win():
 	level += 1

@@ -51,8 +51,8 @@ script/script = ExtResource( 1 )
 
 visibility/opacity = 0.04
 visibility/blend_mode = 1
-transform/pos = Vector2( 289.036, 458.91 )
-transform/scale = Vector2( 0.844054, 1 )
+transform/pos = Vector2( 289.036, 455.415 )
+transform/scale = Vector2( 0.844054, 0.890778 )
 z/z = -10
 z/relative = false
 config/amount = 32

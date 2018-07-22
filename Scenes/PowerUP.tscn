@@ -1,0 +1,159 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Scenes/PowerUP.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Decal.png" type="Texture" id=2]
+
+[sub_resource type="FixedMaterial" id=1]
+
+flags/visible = true
+flags/double_sided = false
+flags/invert_faces = false
+flags/unshaded = true
+flags/on_top = false
+flags/lightmap_on_uv2 = true
+flags/colarray_is_srgb = true
+params/blend_mode = 0
+params/depth_draw = 1
+params/line_width = 4.34635e-31
+fixed_flags/use_alpha = true
+fixed_flags/use_color_array = false
+fixed_flags/use_point_size = false
+fixed_flags/discard_alpha = false
+fixed_flags/use_xy_normalmap = false
+params/diffuse = Color( 1, 0, 0.984375, 1 )
+params/specular = Color( 0, 0, 0, 1 )
+params/emission = Color( 0, 0, 0, 1 )
+params/specular_exp = 40
+params/detail_mix = 1.0
+params/normal_depth = 1
+params/shader = 0
+params/shader_param = 0.5
+params/glow = 0
+params/point_size = 1.0
+uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+textures/diffuse = ExtResource( 2 )
+textures/diffuse_tc = 0
+textures/detail_tc = 0
+textures/specular_tc = 0
+textures/emission_tc = 0
+textures/specular_exp_tc = 0
+textures/glow_tc = 0
+textures/normal_tc = 0
+textures/shade_param_tc = 0
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 1, 1, 1 )
+
+[node name="PowerUp" type="Spatial"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+script/script = ExtResource( 1 )
+
+[node name="Particles" type="Particles" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+material = SubResource( 1 )
+amount = 64
+emitting = true
+visibility = AABB( -4, -4, -4, 8, 8, 8 )
+emission_extents = Vector3( 0.1, 0.1, 0.1 )
+emission_base_velocity = Vector3( 0, 0, 0 )
+emission_points = Vector3Array(  )
+gravity_normal = Vector3( 0, -1, 0 )
+local_coords = false
+emit_timeout = 0.0
+vars/lifetime = 0.6
+vars/spread = 1.0
+vars/gravity = 0.0
+vars/linear_vel = 2.0
+vars/angular_vel = 0.0
+vars/linear_accel = 0.0
+vars/radial_accel = 0.0
+vars/tan_accel = 0.0
+vars/damping = 0.0
+vars/initial_size = 1.0
+vars/final_size = 0.0
+vars/initial_angle = 0.0
+vars/height_from_velocity = false
+vars/height = 1.0
+vars/height_speed_scale = 0.0
+rand/lifetime = 0.0
+rand/spread = 0.0
+rand/gravity = 0.0
+rand/linear_vel = 0.0
+rand/angular_vel = 0.0
+rand/linear_accel = 0.0
+rand/radial_accel = 0.0
+rand/tan_accel = 0.0
+rand/damping = 0.0
+rand/initial_size = 0.0
+rand/final_size = 0.0
+rand/initial_angle = 0.0
+rand/height = 0.0
+rand/height_speed_scale = 0.0
+color_phases/count = 0
+phase_0/pos = 0.0
+phase_0/color = Color( 1, 1, 1, 1 )
+phase_1/pos = 1.0
+phase_1/color = Color( 0, 0, 0, 1 )
+phase_2/pos = 1.0
+phase_2/color = Color( 0, 0, 0, 1 )
+phase_3/pos = 1.0
+phase_3/color = Color( 0, 0, 0, 1 )
+
+[node name="Area" type="Area" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+input/ray_pickable = false
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shapes/0/trigger = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision/layers = 3
+collision/mask = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="area_enter" from="Area" to="." method="_on_Area_area_enter"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+
