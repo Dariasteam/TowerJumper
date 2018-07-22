@@ -58,6 +58,13 @@ func _ready():
 	light.set_color(1,color)
 
 func die():
+	trail.set_emitting(false)
+	idle_particles.set_emitting(false)
+	meteor_particles.set_emitting(false)
+	splash.set_emmitting(false)
+	die_particles.set_emmitting(false)
+	
+	
 	rigid.set_gravity_scale(0)
 	rigid_2.set_gravity_scale(0)
 	rigid_2.set_linear_velocity(Vector3(0,0,0))
@@ -66,17 +73,16 @@ func die():
 	rigid.set_sleeping(true)
 	
 	die_sound.play(0)
-	die_particles.set_emitting(true)
+	big_splash.set_emitting(true)
 	ball.queue_free()
 	area.queue_free()	
 	
-	
-	trail.set_emitting(false)
-	idle_particles.set_emitting(false)		
+		
 	get_node("Timer").start()
 	
 
-func on_platform_passed():		
+func on_platform_passed():
+	unlimit_rotation_range()
 	global.update_points((counter + 1) * 10)
 	global.update_progress()
 	
@@ -166,6 +172,7 @@ func _on_Area_body_enter(body):
 		die()
 	else:
 		if (meteor):
+			unlimit_rotation_range()
 			global.update_points(100)
 			global.update_progress()
 			body.get_parent().get_parent().get_parent().get_parent().meteorize()			

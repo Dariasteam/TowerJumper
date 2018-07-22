@@ -16,7 +16,7 @@ onready var offset = float(360) / SEGMENTS
 
 func _ready():
 	randomize()
-	var angle_offset = 0 #(randi() % 360 + 1)
+	var angle_offset = (randi() % 360 + 1)
 	var cant_move = false
 	
 	for i in range(0, 14):		
@@ -58,13 +58,13 @@ func _ready():
 func _process(delta):
 	rotate(Vector3(0,1,0), velocity * 0.0003)
 
-func explode():
+func explode():	
 	get_node("RegularExplosion").play(1)
 	area.queue_free()
 	for child in children.get_children():
 		child.explode()
 
-func meteorize():	
+func meteorize():		
 	get_node("BigExplosion").play()
 	for child in children.get_children():
 		child.meteorize()

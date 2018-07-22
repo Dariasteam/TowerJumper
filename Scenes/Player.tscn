@@ -137,12 +137,10 @@ _update_shape_index = 0
 
 [node name="Axis" type="Spatial" parent="RigidBody"]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Group" type="Spatial" parent="RigidBody/Axis"]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.406123 )
 
