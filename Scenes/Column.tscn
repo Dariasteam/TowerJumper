@@ -16,16 +16,15 @@ script/script = ExtResource( 1 )
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script/script = ExtResource( 2 )
-color_regular = Color( 0.662304, 0.512939, 0.746094, 1 )
+color_regular = Color( 0.811412, 0.656281, 0.898438, 1 )
 color_bad = Color( 0.996094, 0.256805, 0.534039, 1 )
-color_column = Color( 0.612319, 0.220871, 0.753906, 1 )
+color_column = Color( 0.67526, 0.360626, 0.789062, 1 )
 color_player = Color( 0.390375, 0.894531, 0.0454254, 1 )
 color_power_up_1 = Color( 0.179443, 0.74521, 0.820312, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.27751, 0 )
-n_platforms_to_meteorize = 3
 
 [node name="Axis" type="Spatial" parent="."]
 
@@ -75,7 +74,7 @@ shadow/esm_multiplier = 60.0
 shadow/blur_passes = 1.0
 projector = null
 operator = 0
-shadow/mode = 1
+shadow/mode = 2
 shadow/max_distance = 0.0
 shadow/split_weight = 0.65
 shadow/zoffset_scale = 2.0
