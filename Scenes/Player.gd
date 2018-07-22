@@ -61,8 +61,8 @@ func die():
 	trail.set_emitting(false)
 	idle_particles.set_emitting(false)
 	meteor_particles.set_emitting(false)
-	splash.set_emmitting(false)
-	die_particles.set_emmitting(false)
+	splash.set_emmiting(false)
+	die_particles.set_emmiting(false)
 	
 	
 	rigid.set_gravity_scale(0)
@@ -77,7 +77,6 @@ func die():
 	ball.queue_free()
 	area.queue_free()	
 	
-		
 	get_node("Timer").start()
 	
 
@@ -132,29 +131,24 @@ func is_in_range (v, r_a, r_b):
 
 func _on_set_rotation (rot):	
 	var intent_rotation = normalize_rot(rot + last_safe_rotation.y)
-	
-	print (intent_rotation)
-	print (rotation_range)	
 		
 	if (movement_limited and is_in_range(intent_rotation, rotation_range.x, rotation_range.y)):
 		return false
 				
 	axis.set_rotation_deg(Vector3(0,intent_rotation,0))
 	camera_axis.set_rotation_deg(Vector3(0,intent_rotation,0))
-		
-	print ("y ", axis.get_rotation_deg().y)
-	#axis.rotate(Vector3(0,1,0), -rot)
-	#camera_axis.rotate(Vector3(0,1,0), -rot)
 
 	return true
 
 func end_animation():
-	ball.queue_free()
-	idle_particles.set_emitting(false)
+	ball.queue_free()	
 	rigid.set_linear_velocity(Vector3(0,0,0))
 	rigid.set_gravity_scale(0)
 	rigid_2.set_linear_velocity(Vector3(0,0,0))
 	rigid_2.set_gravity_scale(0)
+	idle_particles.set_emitting(false)
+	trail.set_emitting(false)
+	
 	die_particles.set_emitting(true)
 	
 		

@@ -50,7 +50,7 @@ lossy_quality = 0.7
 
 ambient_light/enabled = true
 ambient_light/color = Color( 0.910156, 0.910156, 0.910156, 1 )
-ambient_light/energy = 1.3
+ambient_light/energy = 1.0
 fxaa/enabled = true
 background/mode = 2
 background/color = Color( 0.632843, 0.793165, 0.910156, 1 )
@@ -554,7 +554,7 @@ input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Transform( 0.141244, 0, 0, 0, 0.141244, 0, 0, 0, 0.141244, 0, -0.499917, -0.108771 )
+shapes/0/transform = Transform( 0.0473541, 0, 0, 0, 0.0473541, 0, 0, 0, 0.0473541, 0, -0.591405, -0.108771 )
 shapes/0/trigger = true
 space_override = 0
 gravity_point = false
@@ -572,7 +572,7 @@ collision/mask = 3
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody/Axis/Group/Area"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.141244, 0, 0, 0, 0.141244, 0, 0, 0, 0.141244, 0, -0.499917, -0.108771 )
+transform/local = Transform( 0.0473541, 0, 0, 0, 0.0473541, 0, 0, 0, 0.0473541, 0, -0.591405, -0.108771 )
 shape = SubResource( 2 )
 trigger = true
 _update_shape_index = 0
@@ -635,7 +635,7 @@ params/attenuation = 1.0
 [node name="DecalRayCast" type="RayCast" parent="RigidBody/Axis"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 3.37836 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 3.70208 )
 enabled = true
 cast_to = Vector3( 0, -10000, 0 )
 layer_mask = 8
@@ -685,7 +685,6 @@ stream/buffering_ms = 500
 "camera",
 ]]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = true
 input/capture_on_drag = false
