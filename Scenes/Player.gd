@@ -61,8 +61,8 @@ func die():
 	trail.set_emitting(false)
 	idle_particles.set_emitting(false)
 	meteor_particles.set_emitting(false)
-	splash.set_emmiting(false)
-	die_particles.set_emmiting(false)
+	splash.set_emitting(false)
+	die_particles.set_emitting(false)
 	
 	
 	rigid.set_gravity_scale(0)
