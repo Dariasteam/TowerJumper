@@ -199,7 +199,7 @@ func power_up():
 	trail.get_material().set_parameter(FixedMaterial.PARAM_DIFFUSE, color)
 	trail.get_material().set_fixed_flag(FixedMaterial.FLAG_USE_ALPHA, true)
 	trail.get_material().set_flag(FixedMaterial.FLAG_UNSHADED, true)
-	light.set_color(1,color)
+	light.set_color(1,color)	
 	
 
 func meteorize():
