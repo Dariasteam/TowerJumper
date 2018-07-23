@@ -9,6 +9,7 @@ plane = Plane( 0, 1, 0, 0 )
 
 [node name="Area" type="Area" groups=[
 "end_line",
+"deleter",
 ]]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -28,8 +29,8 @@ angular_damp = 0.0
 priority = 0.0
 monitoring = true
 monitorable = true
-collision/layers = 2
-collision/mask = 2
+collision/layers = 6
+collision/mask = 6
 script/script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

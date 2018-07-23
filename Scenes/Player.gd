@@ -13,6 +13,7 @@ onready var ball = get_node ("RigidBody/Axis/Group/Ball")
 onready var area = get_node ("RigidBody/Axis/Group/Area")
 onready var rigid_2 = get_node("RigidBody2")
 onready var light = get_node("RigidBody/Axis/Group/OmniLight")
+onready var decal_raycast = get_node("RigidBody/Axis/DecalRayCast")
 
 onready var camera_axis = get_node ("RigidBody2/CameraAxis")
 
@@ -78,9 +79,17 @@ func die():
 	area.queue_free()	
 	
 	get_node("Timer").start()
-	
+
+func block_camera():
+	rigid_2.set_sleeping(true)
+
+func release_camera():	
+	rigid_2.set_sleeping(false)	
 
 func on_platform_passed():
+	release_camera()
+	rigid_2.set_linear_velocity(rigid.get_linear_velocity())	
+	
 	unlimit_rotation_range()
 	global.update_points((counter + 1) * 10)
 	global.update_progress()
@@ -96,9 +105,7 @@ func on_platform_passed():
 		if (meteor_charged):
 			meteor_particles.set_emitting(true)
 			meteorize()
-			
-	rigid_2.set_sleeping(false)
-	rigid_2.set_linear_velocity(rigid.get_linear_velocity())	
+					
 
 func lock_rot():
 	last_safe_rotation = axis.get_rotation_deg()
@@ -152,7 +159,7 @@ func end_animation():
 	die_particles.set_emitting(true)
 	
 		
-func _on_Area_body_enter(body):
+func _on_Area_body_enter(body):	
 	rigid.set_linear_velocity(Vector3(0,0,0))
 
 	light.set_enabled(false)
@@ -164,9 +171,9 @@ func _on_Area_body_enter(body):
 	if (!meteor_charged):
 			meteor_charged = true
 	
-	if (body.is_in_group ("bad") && !meteor):
-		print ("SD")
+	if (!meteor && decal_raycast.is_colliding() and decal_raycast.get_collider().is_in_group("bad")):		
 		die()
+		
 	else:
 		if (meteor):
 			unlimit_rotation_range()
@@ -175,13 +182,15 @@ func _on_Area_body_enter(body):
 			body.get_parent().get_parent().get_parent().get_parent().meteorize()			
 			meteor_charged = false
 			big_splash.set_emitting(true)					
-			rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,100,0))
+			rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,120,0))
+			release_camera()
+			rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,120,0))
 		else:			
 			jump_sound.play(0)
 			var aux = decal.instance()
 			body.get_parent().add_child(aux)
 			var tr = aux.get_global_transform()
-			tr.origin = get_node("RigidBody/Axis/DecalRayCast").get_collision_point()
+			tr.origin = decal_raycast.get_collision_point()
 			aux.set_global_transform(tr)			
 			aux.rotate_y(rand_range(0, 360))
 			aux.translate(Vector3(0,0.0001,0))
@@ -214,3 +223,6 @@ func _on_Timer_timeout():
 func _on_Area_body_exit( body ):
 	colliding = false
 
+func _on_Area_area_enter( area ):
+	if (area.is_in_group("deleter") and !meteor):
+		block_camera()

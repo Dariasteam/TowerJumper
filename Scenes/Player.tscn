@@ -33,7 +33,7 @@ tracks/0/keys = {
 
 [sub_resource type="BoxShape" id=4]
 
-extents = Vector3( 0.171634, 0.185585, 0.128776 )
+extents = Vector3( 0.171634, 0.101157, 0.128776 )
 
 [sub_resource type="CubeMap" id=5]
 
@@ -108,8 +108,8 @@ shape_count = 1
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42167, 0 )
 shapes/0/trigger = true
-collision/layers = 5
-collision/mask = 5
+collision/layers = 4
+collision/mask = 4
 mode = 2
 mass = 3.06122
 friction = 1.0
@@ -141,6 +141,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Group" type="Spatial" parent="RigidBody/Axis"]
 
+editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.10596 )
 
@@ -635,9 +636,9 @@ params/attenuation = 1.0
 [node name="DecalRayCast" type="RayCast" parent="RigidBody/Axis"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 3.70208 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514403, 3.70208 )
 enabled = true
-cast_to = Vector3( 0, -10000, 0 )
+cast_to = Vector3( 0, -1, 0 )
 layer_mask = 8
 type_mask = 1
 
@@ -690,10 +691,10 @@ input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 4 )
-shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0782349, 0.0397879 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01509, 0.0397879 )
 shapes/0/trigger = true
-collision/layers = 7
-collision/mask = 7
+collision/layers = 0
+collision/mask = 0
 mode = 2
 mass = 3.06122
 friction = 0.0
@@ -711,10 +712,32 @@ velocity/angular = Vector3( 0, 0, 0 )
 damp_override/linear = -1.0
 damp_override/angular = -1.0
 
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody2"]
+[node name="Area" type="Area" parent="RigidBody2"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0782349, 0.0397879 )
+input/ray_pickable = false
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01509, 0.0397879 )
+shapes/0/trigger = true
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision/layers = 4
+collision/mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody2/Area"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01509, 0.0397879 )
 shape = SubResource( 4 )
 trigger = true
 _update_shape_index = 0
@@ -748,5 +771,9 @@ enabled = true
 [connection signal="body_exit" from="RigidBody/Axis/Group/Area" to="." method="_on_Area_body_exit"]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[connection signal="area_enter" from="RigidBody2/Area" to="." method="_on_Area_area_enter"]
+
+[connection signal="area_exit" from="RigidBody2/Area" to="." method="_on_Area_area_exit"]
 
 

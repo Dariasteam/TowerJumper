@@ -19,16 +19,17 @@ velocity = 0.0
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
 
-[node name="Deleter" type="Area" parent="."]
+[node name="Deleter" type="Area" parent="." groups=[
+"deleter",
+]]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -0.987758, 0 )
 input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shapes/0/transform = Transform( 1.18442, 0, 0, 0, 1.18442, 0, 0, 0, 1.18442, 0, -0.0609525, 0 )
 shapes/0/trigger = false
 space_override = 0
 gravity_point = false
@@ -46,6 +47,7 @@ collision/mask = 4
 [node name="CollisionShape" type="CollisionShape" parent="Deleter"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1.18442, 0, 0, 0, 1.18442, 0, 0, 0, 1.18442, 0, -0.0609525, 0 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0

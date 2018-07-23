@@ -63,7 +63,7 @@ layers = 1
 params/enabled = true
 params/editor_only = false
 params/bake_mode = 1
-params/energy = 0.65
+params/energy = 0.5
 colors/diffuse = Color( 1, 1, 1, 1 )
 colors/specular = Color( 1, 1, 1, 1 )
 shadow/shadow = false
@@ -81,7 +81,6 @@ shadow/zoffset_scale = 2.0
 
 [node name="Spatial" parent="." instance=ExtResource( 6 )]
 
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83688, 17.7, 2.56991 )
-visibility/visible = false
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83688, 17.4298, 2.56991 )
 
 

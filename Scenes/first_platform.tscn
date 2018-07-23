@@ -17,9 +17,10 @@ velocity = 0.0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
-[node name="Area" type="Area" parent="."]
+[node name="Area" type="Area" parent="." groups=[
+"deleter",
+]]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.240012, 0 )
 input/ray_pickable = false
@@ -38,8 +39,8 @@ angular_damp = 1.0
 priority = 0.0
 monitoring = true
 monitorable = true
-collision/layers = 5
-collision/mask = 5
+collision/layers = 4
+collision/mask = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 

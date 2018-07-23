@@ -8,7 +8,7 @@ func _ready():
 	set_process(true)
 	
 func _process(delta):
-	rotate(Vector3(0,1,0), velocity * 0.0003)
+	rotate(Vector3(0,1,0), velocity * 0.003)
 	
 func set_material(material):	
 	get_node("REGULAR").set_material_override(material)
