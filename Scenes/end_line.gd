@@ -25,4 +25,4 @@ func meteorize():
 	pass
 
 func _on_Timer_timeout():	
-	global.handl_win()
+	global.handle_win()

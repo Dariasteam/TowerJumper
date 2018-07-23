@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Scenes/Column.gd" type="Script" id=1]
-[ext_resource path="res://configs.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://platforms_deployer.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://platforms_deployer.gd" type="Script" id=3]
+[ext_resource path="res://Materials/mat_column.tres" type="Material" id=4]
 [ext_resource path="res://Mesh/column.msh" type="Mesh" id=5]
 [ext_resource path="res://Scenes/PowerUP.tscn" type="PackedScene" id=6]
 
@@ -12,24 +12,14 @@
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script/script = ExtResource( 1 )
 
-[node name="Configs" type="Spatial" parent="."]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-script/script = ExtResource( 2 )
-color_regular = Color( 0.811412, 0.656281, 0.898438, 1 )
-color_bad = Color( 0.996094, 0.256805, 0.534039, 1 )
-color_column = Color( 0.67526, 0.360626, 0.789062, 1 )
-color_player = Color( 0.390375, 0.894531, 0.0454254, 1 )
-color_power_up_1 = Color( 0.179443, 0.74521, 0.820312, 1 )
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.27751, 0 )
 
 [node name="Axis" type="Spatial" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-script/script = ExtResource( 4 )
+script/script = ExtResource( 3 )
 space = 7
 n_platforms = 30
 
@@ -39,7 +29,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2.55, 0, 0, 0, 1, 0, 0, 0, 2.55, 0, -105, 0 )
 layers = 1
 geometry/visible = true
-geometry/material_override = null
+geometry/material_override = ExtResource( 4 )
 geometry/cast_shadow = 0
 geometry/receive_shadows = false
 geometry/range_begin = 0.0

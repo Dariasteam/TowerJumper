@@ -5,10 +5,10 @@ extends Spatial
 # var b = "textvar"
 
 func _ready():
+	return
 	var color = global.mat_power_up_1.get_parameter(FixedMaterial.PARAM_DIFFUSE)
 	get_node("Particles").get_material().set_parameter(FixedMaterial.PARAM_DIFFUSE, color)
 	
-
 
 func _on_Area_area_enter( area ):
 	OS.set_time_scale(0.4)

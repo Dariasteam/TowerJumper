@@ -1,10 +1,13 @@
 extends Node
 
-var mat_bad
-var mat_regular
-var mat_column
-var mat_player
+var mat_bad = preload("res://Materials/mat_segment_bad.tres")
+var mat_regular = preload("res://Materials/mat_segment_regular.tres") 
+var mat_column = preload("res://Materials/mat_column.tres")
+var mat_player = preload("res://Materials/mat_player.tres")
 var mat_power_up_1
+
+var environment_palette = []
+var current_palette
 
 var player
 
@@ -20,8 +23,15 @@ var level = 0
 signal update_points_viewer
 signal update_progress
 
+func apply_random_palette():
+	randomize()
+	current_palette = environment_palette[randi() % environment_palette.size()]
+	mat_regular.set_parameter(FixedMaterial.PARAM_DIFFUSE, Color(current_palette[0]))
+	mat_bad.set_parameter(FixedMaterial.PARAM_DIFFUSE, Color(current_palette[1]))	
+	mat_column.set_parameter(FixedMaterial.PARAM_DIFFUSE, Color(current_palette[2]))	
 
-func handl_win():	
+func handle_win():
+	apply_random_palette()
 	level += 1	
 	progress = 0
 	total_points += current_points
@@ -58,7 +68,26 @@ func save_game():
 	
 func _ready():
 	load_game()
+	load_palette()
+	apply_random_palette()
+
+func load_palette():
+	var palette = File.new()
+	if !palette.file_exists("res://palette.json"):
+		return #Error
+		
+	var content = {}
+	palette.open("res://palette.json", File.READ)
+	content.parse_json(palette.get_as_text())
+	palette.close()
+		
+	for element in content["environment"]:
+		environment_palette.push_back(element)
 	
+	mat_player.set_parameter(FixedMaterial.PARAM_DIFFUSE, Color(content["player"]))
+	
+
+
 func load_game():
 	var savegame = File.new()
 	if !savegame.file_exists("user://savegame.save"):
@@ -66,7 +95,7 @@ func load_game():
 		
 	var currentline = {}
 	savegame.open("user://savegame.save", File.READ)
-	currentline.parse_json(savegame.get_line())	
+	currentline.parse_json(savegame.get_line())
 	total_points = currentline["total_points"]
 	level = currentline["level"]
 	savegame.close()

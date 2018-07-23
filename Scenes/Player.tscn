@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Materials/particle.tres" type="Material" id=2]
-[ext_resource path="res://Mesh/ball.msh" type="Mesh" id=3]
-[ext_resource path="res://Sound/jump.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Sound/die.ogg" type="AudioStream" id=5]
-[ext_resource path="res://Sound/acceleration.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Materials/mat_player.tres" type="Material" id=3]
+[ext_resource path="res://Mesh/ball.msh" type="Mesh" id=4]
+[ext_resource path="res://Sound/jump.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sound/die.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sound/acceleration.ogg" type="AudioStream" id=7]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -141,7 +142,6 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Group" type="Spatial" parent="RigidBody/Axis"]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.10596 )
 
@@ -584,7 +584,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 0.675, 0, 0, 0, 0.65, 0, 0, 0, 0.675, 0, 0, 7.95683 )
 layers = 1
 geometry/visible = true
-geometry/material_override = null
+geometry/material_override = ExtResource( 3 )
 geometry/cast_shadow = 1
 geometry/receive_shadows = true
 geometry/range_begin = 0.0
@@ -596,7 +596,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 3 )
+mesh/mesh = ExtResource( 4 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -651,7 +651,7 @@ autostart = false
 
 [node name="JumpSound" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 4 )
+stream/stream = ExtResource( 5 )
 stream/play = false
 stream/loop = false
 stream/volume_db = 10.0
@@ -662,7 +662,7 @@ stream/buffering_ms = 500
 
 [node name="DieSound" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 5 )
+stream/stream = ExtResource( 6 )
 stream/play = false
 stream/loop = false
 stream/volume_db = 11.0
@@ -673,7 +673,7 @@ stream/buffering_ms = 500
 
 [node name="AccelerationSound" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 6 )
+stream/stream = ExtResource( 7 )
 stream/play = false
 stream/loop = false
 stream/volume_db = 10.0
