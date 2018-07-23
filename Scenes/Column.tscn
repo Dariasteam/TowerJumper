@@ -72,5 +72,6 @@ shadow/zoffset_scale = 2.0
 [node name="Spatial" parent="." instance=ExtResource( 6 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83688, 17.4298, 2.56991 )
+visibility/visible = false
 
 
