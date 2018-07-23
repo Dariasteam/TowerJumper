@@ -12,6 +12,7 @@ var player_color = []
 var decal_materials = []
 
 var total_points = 0
+var current_points = 0
 var progress = 0
 var level_size = 29
 var level = 0
@@ -23,10 +24,13 @@ signal update_progress
 func handl_win():	
 	level += 1	
 	progress = 0
+	total_points += current_points
+	current_points = 0
 	save_game()
 	get_tree().change_scene("res://Scenes/Input_Handler.tscn")
 	
 func handle_lose():
+	current_points = 0
 	save_game()	
 	progress = 0
 	get_tree().change_scene("res://Scenes/Input_Handler.tscn")
@@ -36,7 +40,7 @@ func update_progress():
 	emit_signal("update_progress")
 	
 func update_points(addition):	
-	total_points += addition	
+	current_points += addition	
 	emit_signal("update_points_viewer", addition)	
 	
 	
