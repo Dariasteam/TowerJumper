@@ -193,7 +193,7 @@ func _on_Area_body_enter(body):
 			tr.origin = decal_raycast.get_collision_point()
 			aux.set_global_transform(tr)			
 			aux.rotate_y(rand_range(0, 360))
-			aux.translate(Vector3(0,0.0001,0))
+			aux.translate(Vector3(0,0.001,0))
 				
 		
 		rigid.apply_impulse(Vector3(0,0,0), Vector3(0,70,0))

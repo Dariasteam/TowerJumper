@@ -58,8 +58,8 @@ colors/diffuse = Color( 1, 1, 1, 1 )
 colors/specular = Color( 1, 1, 1, 1 )
 shadow/shadow = true
 shadow/darkening = 0.0
-shadow/z_offset = 0.03
-shadow/z_slope_scale = 1.0
+shadow/z_offset = 0.3
+shadow/z_slope_scale = 5.0
 shadow/esm_multiplier = 60.0
 shadow/blur_passes = 1.0
 projector = null
@@ -67,7 +67,7 @@ operator = 0
 shadow/mode = 0
 shadow/max_distance = 40.0
 shadow/split_weight = 0.65
-shadow/zoffset_scale = 0.001
+shadow/zoffset_scale = 0.01
 
 [node name="Spatial" parent="." instance=ExtResource( 6 )]
 
