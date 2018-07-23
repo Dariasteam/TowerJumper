@@ -30,8 +30,8 @@ transform/local = Transform( 2.55, 0, 0, 0, 1, 0, 0, 0, 2.55, 0, -105, 0 )
 layers = 1
 geometry/visible = true
 geometry/material_override = ExtResource( 4 )
-geometry/cast_shadow = 0
-geometry/receive_shadows = false
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
 geometry/range_begin = 0.0
 geometry/range_end = 0.0
 geometry/extra_cull_margin = 0.0
@@ -56,7 +56,7 @@ params/bake_mode = 1
 params/energy = 0.45
 colors/diffuse = Color( 1, 1, 1, 1 )
 colors/specular = Color( 1, 1, 1, 1 )
-shadow/shadow = false
+shadow/shadow = true
 shadow/darkening = 0.0
 shadow/z_offset = 0.05
 shadow/z_slope_scale = 0.0
@@ -64,10 +64,10 @@ shadow/esm_multiplier = 60.0
 shadow/blur_passes = 1.0
 projector = null
 operator = 0
-shadow/mode = 2
-shadow/max_distance = 0.0
+shadow/mode = 0
+shadow/max_distance = 19.0
 shadow/split_weight = 0.65
-shadow/zoffset_scale = 2.0
+shadow/zoffset_scale = 0.01
 
 [node name="Spatial" parent="." instance=ExtResource( 6 )]
 
