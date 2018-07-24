@@ -1,11 +1,16 @@
 {
   "player" : "63e40b",
   "comment" : "
-    For environment put a vector with color in this order:
+    For environment add a vector of colors in this order:
 
-    Regular
-    Bad
+    Regular segment
+    Bad segment
     Column
+
+    Example:
+
+     Regular      Bad      Column
+    ["cea7e5", "fe4188", "ac5bc9"],
   ",
   "environment" : [
     ["cea7e5", "fe4188", "ac5bc9"],

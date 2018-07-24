@@ -64,12 +64,7 @@ func die():
 	meteor_particles.set_emitting(false)
 	splash.set_emitting(false)
 	die_particles.set_emitting(false)
-	
-	
-	rigid.set_gravity_scale(0)
-	rigid_2.set_gravity_scale(0)
-	rigid_2.set_linear_velocity(Vector3(0,0,0))
-	rigid.set_linear_velocity(Vector3(0,0,0))
+
 	rigid_2.set_sleeping(true)
 	rigid.set_sleeping(true)
 	
