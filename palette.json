@@ -10,7 +10,7 @@
     Example:
 
      Regular      Bad      Column
-    ["cea7e5", "fe4188", "ac5bc9"],
+    [cea7e5, fe4188, ac5bc9],
   ",
   "environment" : [
     ["cea7e5", "fe4188", "ac5bc9"],
