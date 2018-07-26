@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://input_handler.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Particle.png" type="Texture" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://points_handler.gd" type="Script" id=5]
 [ext_resource path="res://Fonts/points_font.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://Sprites/icon_shadow_false.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/icon_shadow_true.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/icon_sound_false.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/icon_sound_true.png" type="Texture" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -36,32 +40,25 @@ func _ready():
 	global.connect(\"update_progress\", self, \"update_progress\")	
 "
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=5]
 
-script/source = "extends Button
+script/source = "extends TextureButton
 
 onready var light = get_tree().get_nodes_in_group(\"light\")[0]
 
-func _on_Button_toggled( pressed ):
+func _on_TextureButton_toggled( pressed ):
 	light.set_project_shadows (pressed)
-		
 "
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=6]
 
-script/source = "extends Button
+script/source = "extends TextureButton
 
 onready var sound_emitters = get_tree().get_nodes_in_group(\"sound_player\")
 
-func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
 
-
-func _on_Button1_toggled( pressed ):
+func _on_SoundButton_toggled( pressed ):
 	global.sound_enabled = pressed	
-		
 "
 
 [node name="Control" type="Control"]
@@ -201,7 +198,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Button" type="Button" parent="."]
+[node name="ShadowButton" type="TextureButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -209,36 +206,42 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 66.0
-margin/bottom = 51.0
+margin/right = 118.0
+margin/bottom = 112.0
 toggle_mode = true
 is_pressed = true
 enabled_focus_mode = 2
 shortcut = null
-flat = false
-script/script = SubResource( 3 )
+textures/normal = ExtResource( 7 )
+textures/pressed = ExtResource( 8 )
+params/resize_mode = 1
+params/stretch_mode = 5
+script/script = SubResource( 5 )
 
-[node name="Button1" type="Button" parent="."]
+[node name="SoundButton" type="TextureButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 652.0
-margin/top = 0.0
-margin/right = 718.0
-margin/bottom = 51.0
+margin/left = 620.0
+margin/top = 1.0
+margin/right = 721.0
+margin/bottom = 101.0
 toggle_mode = true
 is_pressed = true
 enabled_focus_mode = 2
 shortcut = null
-flat = false
-script/script = SubResource( 4 )
+textures/normal = ExtResource( 9 )
+textures/pressed = ExtResource( 10 )
+params/resize_mode = 1
+params/stretch_mode = 1
+script/script = SubResource( 6 )
 
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
 
-[connection signal="toggled" from="Button" to="Button" method="_on_Button_toggled"]
+[connection signal="toggled" from="ShadowButton" to="ShadowButton" method="_on_TextureButton_toggled"]
 
-[connection signal="toggled" from="Button1" to="Button1" method="_on_Button1_toggled"]
+[connection signal="toggled" from="SoundButton" to="SoundButton" method="_on_SoundButton_toggled"]
 
 
