@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://input_handler.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Particle.png" type="Texture" id=2]
@@ -34,6 +34,34 @@ func update_progress():
 func _ready():
 	set_max(global.level_size)
 	global.connect(\"update_progress\", self, \"update_progress\")	
+"
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Button
+
+onready var light = get_tree().get_nodes_in_group(\"light\")[0]
+
+func _on_Button_toggled( pressed ):
+	light.set_project_shadows (pressed)
+		
+"
+
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends Button
+
+onready var sound_emitters = get_tree().get_nodes_in_group(\"sound_player\")
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+
+func _on_Button1_toggled( pressed ):
+	global.sound_enabled = pressed	
+		
 "
 
 [node name="Control" type="Control"]
@@ -173,6 +201,44 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="Button" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 66.0
+margin/bottom = 51.0
+toggle_mode = true
+is_pressed = true
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+script/script = SubResource( 3 )
+
+[node name="Button1" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 652.0
+margin/top = 0.0
+margin/right = 718.0
+margin/bottom = 51.0
+toggle_mode = true
+is_pressed = true
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+script/script = SubResource( 4 )
+
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+
+[connection signal="toggled" from="Button" to="Button" method="_on_Button_toggled"]
+
+[connection signal="toggled" from="Button1" to="Button1" method="_on_Button1_toggled"]
 
 

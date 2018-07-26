@@ -68,7 +68,9 @@ func die():
 	rigid_2.set_sleeping(true)
 	rigid.set_sleeping(true)
 	
-	die_sound.play(0)
+	if (global.sound_enabled):
+		die_sound.play(0)
+		
 	big_splash.set_emitting(true)
 	ball.queue_free()
 	area.queue_free()	
@@ -89,8 +91,8 @@ func on_platform_passed():
 	global.update_points((counter + 1) * 10)
 	global.update_progress()
 	
-	if (counter == 1):
-		acceleration_sound.play(2)
+	if (counter == 1 and global.sound_enabled):		
+		acceleration_sound.play(1.5)
 	
 	counter += 1
 	if (counter == n_platforms_to_meteorize - 1):
@@ -180,8 +182,9 @@ func _on_Area_body_enter(body):
 			rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,120,0))
 			release_camera()
 			rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,120,0))
-		else:			
-			jump_sound.play(0)
+		else:
+			if (global.sound_enabled):
+				jump_sound.play(0)
 			var aux = decal.instance()
 			body.get_parent().add_child(aux)
 			var tr = aux.get_global_transform()

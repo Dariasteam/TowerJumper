@@ -20,7 +20,8 @@ func _ready():
 		children.add_child(aux)
 
 func explode():	
-	get_node("StreamPlayer").play(0)
+	if (global.sound_enabled):
+		get_node("StreamPlayer").play(0)
 	for child in children.get_children():
 		child.explode()
 	area.queue_free()

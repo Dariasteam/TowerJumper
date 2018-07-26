@@ -10,6 +10,7 @@ var environment_palette = []
 var current_palette
 
 var player
+var sound_enabled = true
 
 var player_color = []
 var decal_materials = []

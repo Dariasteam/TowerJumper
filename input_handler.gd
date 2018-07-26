@@ -24,3 +24,4 @@ func _on_TouchScreenButton_pressed():
 	last_pos = get_local_mouse_pos().x
 	game.lock_rot();
 
+

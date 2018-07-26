@@ -1,0 +1,33 @@
+[gd_resource type="BakedLight" format=1]
+
+[resource]
+
+mode/mode = 0
+baking/format = 0
+baking/cell_subdiv = 8
+baking/lattice_subdiv = 4
+baking/light_bounces = 1
+baking/plot_size = 2.5
+baking/energy_mult = 2.0
+baking/gamma_adjust = 0.7
+baking/saturation = 1.0
+baking_flags/diffuse = true
+baking_flags/specular = false
+baking_flags/translucent = true
+baking_flags/conserve_energy = false
+baking_flags/linear_color = false
+lightmap/use_only_uv2 = false
+octree = ByteArray(  )
+light = ByteArray(  )
+sampler_octree = IntArray(  )
+lightmaps = [  ]
+advanced/cell_margin = 0.05
+advanced/edge_damp = 0.0
+advanced/normal_damp = 0.0
+advanced/light_tint = 0.0
+advanced/ao_radius = 2.5
+advanced/ao_strength = 0.7
+realtime/enabled = true
+realtime/color = Color( 1, 1, 1, 1 )
+realtime/energy = 1.0
+

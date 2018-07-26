@@ -649,7 +649,9 @@ wait_time = 2.0
 one_shot = false
 autostart = false
 
-[node name="JumpSound" type="StreamPlayer" parent="."]
+[node name="JumpSound" type="StreamPlayer" parent="." groups=[
+"sound_player",
+]]
 
 stream/stream = ExtResource( 5 )
 stream/play = false
@@ -660,7 +662,9 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
-[node name="DieSound" type="StreamPlayer" parent="."]
+[node name="DieSound" type="StreamPlayer" parent="." groups=[
+"sound_player",
+]]
 
 stream/stream = ExtResource( 6 )
 stream/play = false
@@ -671,7 +675,9 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
-[node name="AccelerationSound" type="StreamPlayer" parent="."]
+[node name="AccelerationSound" type="StreamPlayer" parent="." groups=[
+"sound_player",
+]]
 
 stream/stream = ExtResource( 7 )
 stream/play = false

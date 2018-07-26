@@ -39,24 +39,26 @@ geometry/billboard = false
 geometry/billboard_y = false
 geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
-geometry/use_baked_light = false
+geometry/use_baked_light = true
 geometry/baked_light_tex_id = 0
 mesh/mesh = ExtResource( 5 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
+[node name="DirectionalLight" type="DirectionalLight" parent="." groups=[
+"light",
+]]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 0.403186, 0.638602, -0.65546, 0, 0.716257, 0.697836, 0.915118, -0.281357, 0.288785, 0, 0, -21.773 )
 layers = 1
 params/enabled = true
 params/editor_only = false
-params/bake_mode = 1
+params/bake_mode = 3
 params/energy = 0.45
 colors/diffuse = Color( 1, 1, 1, 1 )
 colors/specular = Color( 1, 1, 1, 1 )
-shadow/shadow = false
+shadow/shadow = true
 shadow/darkening = 0.0
 shadow/z_offset = 0.3
 shadow/z_slope_scale = 5.0

@@ -58,14 +58,16 @@ func _ready():
 func _process(delta):
 	rotate(Vector3(0,1,0), velocity * 0.0003)
 
-func explode():	
-	get_node("RegularExplosion").play(0)
+func explode():
+	if (global.sound_enabled):
+		get_node("RegularExplosion").play()
 	area.queue_free()
 	for child in children.get_children():
 		child.explode()
 
 func meteorize():		
-	get_node("BigExplosion").play()
+	if (global.sound_enabled):
+		get_node("BigExplosion").play()
 	for child in children.get_children():
 		child.meteorize()
 	explode()
