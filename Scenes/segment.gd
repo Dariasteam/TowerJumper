@@ -16,7 +16,7 @@ func set_material(material):
 func set_bad():
 	get_node("REGULAR/StaticBody").add_to_group("bad")
 	
-func explode():	
+func explode():		
 	get_node("REGULAR/StaticBody").queue_free()
 	get_node("REGULAR/AnimationPlayer").play("explode")
 

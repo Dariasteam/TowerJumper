@@ -51,16 +51,6 @@ tracks/3/keys = {
 "method": "queue_free"
 } ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:material/0:params/diffuse")
-tracks/4/interp = 1
-tracks/4/imported = false
-tracks/4/keys = {
-"times": FloatArray(  ),
-"transitions": FloatArray(  ),
-"update": 0,
-"values": [  ]
-}
 
 [sub_resource type="ConvexPolygonShape" id=2]
 
@@ -101,7 +91,6 @@ autoplay = ""
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = false
 input/capture_on_drag = false

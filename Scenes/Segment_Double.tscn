@@ -41,7 +41,7 @@ tracks/2/keys = {
 "values": [ Vector3( 2, 1.2, 2 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/3/type = "method"
-tracks/3/path = NodePath(".")
+tracks/3/path = NodePath("..")
 tracks/3/interp = 1
 tracks/3/imported = false
 tracks/3/keys = {
@@ -51,16 +51,6 @@ tracks/3/keys = {
 "args": [  ],
 "method": "queue_free"
 } ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:material/0:params/diffuse")
-tracks/4/interp = 1
-tracks/4/imported = false
-tracks/4/keys = {
-"times": FloatArray(  ),
-"transitions": FloatArray(  ),
-"update": 0,
-"values": [  ]
 }
 
 [sub_resource type="ConvexPolygonShape" id=2]
@@ -75,7 +65,7 @@ script/script = ExtResource( 1 )
 [node name="REGULAR" type="MeshInstance" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 2.05, 0, 0, 0, 1.7, 0, 0, 0, 2.05, 0, -0.5, 0 )
+transform/local = Transform( 2.01, 0, 0, 0, 1.6, 0, 0, 0, 2.01, 0, -0.5, 0 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null

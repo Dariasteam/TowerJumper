@@ -27,19 +27,19 @@ func _ready():
 		if (rand >= 17):
 			aux = segment.instance()
 			aux.set_bad()
-			aux.set_material (global.mat_bad)			
+			aux.set_material (global.mat_bad)						
 		elif (rand >= 16):
 			aux = segment_movement.instance()
 			aux.set_translation(Vector3(0,rand_range(-0.01, 0.01), 0))
-			aux.set_material (global.mat_regular)			
+			aux.set_material (global.mat_regular)						
 		elif (rand == 15 and !cant_move):						
 			allowed_range = Vector2(rot - offset - 14, rot + 7)			
 			cant_move = true
 			aux = segment_tall.instance()
-			aux.set_material (global.mat_regular)			
+			aux.set_material (global.mat_regular)						
 		elif (rand > 1):
 			aux = segment.instance()
-			aux.set_material (global.mat_regular)			
+			aux.set_material (global.mat_regular)						
 			
 		
 		if (aux != null):			
@@ -59,7 +59,7 @@ func _process(delta):
 	rotate(Vector3(0,1,0), velocity * 0.0003)
 
 func explode():	
-	get_node("RegularExplosion").play(1)
+	get_node("RegularExplosion").play(0)
 	area.queue_free()
 	for child in children.get_children():
 		child.explode()

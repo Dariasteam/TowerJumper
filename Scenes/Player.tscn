@@ -52,7 +52,7 @@ lossy_quality = 0.7
 ambient_light/enabled = true
 ambient_light/color = Color( 0.910156, 0.910156, 0.910156, 1 )
 ambient_light/energy = 1.0
-fxaa/enabled = true
+fxaa/enabled = false
 background/mode = 2
 background/color = Color( 0.632843, 0.793165, 0.910156, 1 )
 background/cubemap = SubResource( 5 )
@@ -773,7 +773,5 @@ enabled = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [connection signal="area_enter" from="RigidBody2/Area" to="." method="_on_Area_area_enter"]
-
-[connection signal="area_exit" from="RigidBody2/Area" to="." method="_on_Area_area_exit"]
 
 

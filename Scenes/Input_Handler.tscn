@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://input_handler.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Particle.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Column.tscn" type="PackedScene" id=3]
-[ext_resource path="res://points_handler.gd" type="Script" id=4]
-[ext_resource path="res://Fonts/points_font.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://points_handler.gd" type="Script" id=5]
+[ext_resource path="res://Fonts/points_font.fnt" type="BitmapFont" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -87,7 +88,7 @@ transform/local = Transform( 1, -0.000389379, 0.000242338, 0.000389331, 1, 0.000
 visibility/opacity = 0.0
 transform/pos = Vector2( 3.70129, 1.18372 )
 transform/scale = Vector2( 7.1743, 12.9134 )
-normal = ExtResource( 2 )
+normal = ExtResource( 4 )
 pressed = null
 bitmask = null
 shape = null
@@ -107,7 +108,7 @@ margin/left = -16.0
 margin/top = 121.0
 margin/right = 704.0
 margin/bottom = 376.0
-script/script = ExtResource( 4 )
+script/script = ExtResource( 5 )
 
 [node name="TotalPoints" type="Label" parent="PointsHadler"]
 
@@ -122,7 +123,7 @@ margin/left = 343.0
 margin/top = 67.0
 margin/right = -376.0
 margin/bottom = 98.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 0.941406, 0.964752, 1 )
 text = "0"
 align = 1
@@ -164,7 +165,7 @@ margin/left = 358.0
 margin/top = 13.0
 margin/right = -361.0
 margin/bottom = 1184.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 0.941406, 0.964752, 1 )
 text = "Nivel"
 align = 1
