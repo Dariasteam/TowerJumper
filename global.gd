@@ -10,7 +10,9 @@ var environment_palette = []
 var current_palette
 
 var player
-var sound_enabled = true
+
+onready var shadows_enabled = true
+onready var sound_enabled = true
 
 var player_color = []
 var decal_materials = []
@@ -54,20 +56,8 @@ func update_points(addition):
 	current_points += addition	
 	emit_signal("update_points_viewer", addition)	
 	
-	
-func save_game():
-	var savedict = {
-		total_points = total_points,
-		level = level
-	}	
-	
-	var savegame = File.new()
-	savegame.open("user://savegame.save", File.WRITE)	
-	savegame.store_line(savedict.to_json())
-	savegame.close()
-
-	
 func _ready():
+	save_game()
 	load_game()
 	load_palette()
 	apply_random_palette()
@@ -87,6 +77,18 @@ func load_palette():
 	
 	mat_player.set_parameter(FixedMaterial.PARAM_DIFFUSE, Color(content["player"]))
 	
+func save_game():
+	var savedict = {
+		total_points = total_points,
+		level = level,
+		shadows_enabled = shadows_enabled,
+		sound_enabled = sound_enabled
+	}	
+	
+	var savegame = File.new()
+	savegame.open("user://savegame.save", File.WRITE)	
+	savegame.store_line(savedict.to_json())
+	savegame.close()
 
 
 func load_game():
@@ -99,5 +101,7 @@ func load_game():
 	currentline.parse_json(savegame.get_line())
 	total_points = currentline["total_points"]
 	level = currentline["level"]
+	shadows_enabled = currentline["shadows_enabled"]
+	sound_enabled = currentline["sound_enabled"]
 	savegame.close()
 

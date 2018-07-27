@@ -15,6 +15,7 @@ const SEGMENTS = 16
 onready var offset = float(360) / SEGMENTS
 
 func _ready():
+	
 	randomize()
 	var angle_offset = (randi() % 360 + 1)
 	var cant_move = false

@@ -40,22 +40,28 @@ func _ready():
 	global.connect(\"update_progress\", self, \"update_progress\")	
 "
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=3]
 
 script/source = "extends TextureButton
 
 onready var light = get_tree().get_nodes_in_group(\"light\")[0]
 
+func _ready():
+	set_pressed(global.shadows_enabled)
+
 func _on_TextureButton_toggled( pressed ):
+	global.shadows_enabled = pressed
 	light.set_project_shadows (pressed)
 "
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=4]
 
 script/source = "extends TextureButton
 
 onready var sound_emitters = get_tree().get_nodes_in_group(\"sound_player\")
 
+func _ready():
+	set_pressed(global.sound_enabled)
 
 func _on_SoundButton_toggled( pressed ):
 	global.sound_enabled = pressed	
@@ -216,7 +222,7 @@ textures/normal = ExtResource( 7 )
 textures/pressed = ExtResource( 8 )
 params/resize_mode = 1
 params/stretch_mode = 5
-script/script = SubResource( 5 )
+script/script = SubResource( 3 )
 
 [node name="SoundButton" type="TextureButton" parent="."]
 
@@ -236,7 +242,7 @@ textures/normal = ExtResource( 9 )
 textures/pressed = ExtResource( 10 )
 params/resize_mode = 1
 params/stretch_mode = 1
-script/script = SubResource( 6 )
+script/script = SubResource( 4 )
 
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
 
