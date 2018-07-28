@@ -57,8 +57,8 @@ func update_points(addition):
 	emit_signal("update_points_viewer", addition)	
 	
 func _ready():
-	save_game()
 	load_game()
+	save_game()
 	load_palette()
 	apply_random_palette()
 
@@ -101,7 +101,10 @@ func load_game():
 	currentline.parse_json(savegame.get_line())
 	total_points = currentline["total_points"]
 	level = currentline["level"]
-	shadows_enabled = currentline["shadows_enabled"]
-	sound_enabled = currentline["sound_enabled"]
+	
+	
+	if currentline.has("shadows_enabled"):
+		shadows_enabled = currentline["shadows_enabled"]
+		sound_enabled = currentline["sound_enabled"]
 	savegame.close()
 
