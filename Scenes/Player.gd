@@ -44,7 +44,6 @@ func limit_rotation_range(allowed_range):
 	var first  = normalize_rot(allowed_range.x)
 	var second = normalize_rot(allowed_range.y)	
 	rotation_range = Vector2(first, second)
-	
 
 func unlimit_rotation_range():
 	movement_limited = false
@@ -120,8 +119,13 @@ func normalize_rot(rot):
 			changed = true
 			
 	return rot
-	
+
+func set_player_rotation (value):
+	axis.set_rotation_deg(Vector3(0,value,0))
+	camera_axis.set_rotation_deg(Vector3(0,value,0))
+
 func is_in_range (v, r_a, r_b):
+	# Hay bloqueo
 	if (r_a - r_b > 40):
 		if (r_a < r_b):
 			return (v < r_a or v > r_b)
@@ -137,11 +141,13 @@ func _on_set_rotation (rot):
 	var intent_rotation = normalize_rot(rot + last_safe_rotation.y)
 		
 	if (movement_limited and is_in_range(intent_rotation, rotation_range.x, rotation_range.y)):
+		if (abs(intent_rotation - rotation_range.x) < abs(intent_rotation - rotation_range.y)):
+			set_player_rotation(rotation_range.x)
+		else:
+			set_player_rotation(rotation_range.y)
 		return false
-				
-	axis.set_rotation_deg(Vector3(0,intent_rotation,0))
-	camera_axis.set_rotation_deg(Vector3(0,intent_rotation,0))
-
+		
+	set_player_rotation(intent_rotation)	
 	return true
 
 func end_animation():
