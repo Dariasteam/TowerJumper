@@ -1,0 +1,2 @@
+Clon de libre de un tipo de juego muy popular en android en el que debes mover una pelota saltarina intentando llegar a la base de una torre a la vez que evitas los obstáculos. Los niveles son generados aleatoriamente.
+
