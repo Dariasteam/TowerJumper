@@ -54,7 +54,6 @@ _update_shape_index = 0
 
 [node name="Init" type="Area" parent="."]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 3.09495, 0 )
 input/ray_pickable = false

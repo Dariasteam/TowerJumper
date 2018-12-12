@@ -144,8 +144,7 @@ func _on_set_rotation (rot):
 	if (movement_limited):
 		
 		# CASE IN BETWEEN
-		if (is_in_range(intent_rotation, rotation_range.x, rotation_range.y)):
-			print ("RANGE")
+		if (is_in_range(intent_rotation, rotation_range.x, rotation_range.y)):			
 			var diff_a = abs(rot_dir - rotation_range.x)
 			var diff_b = abs(rot_dir - rotation_range.y)
 			
@@ -153,7 +152,8 @@ func _on_set_rotation (rot):
 				intent_rotation = rotation_range.x
 			else:
 				intent_rotation = rotation_range.y
-					
+		
+		
 		if (rotation_range.x < rotation_range.y):
 			# REGULAR CASE
 			if (rot_dir <= rotation_range.x and intent_rotation >= rotation_range.x): 				# PLAYER IS PRE WALL								
