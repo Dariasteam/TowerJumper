@@ -137,37 +137,34 @@ func is_in_range (v, r_a, r_b):
 		else:
 			return (v > r_b and v < r_a)
 
-func _on_set_rotation (rot):	
-	
+func _on_set_rotation (rot):		
 	var intent_rotation = rot + last_safe_rotation.y
-	
-	#print (rotation_range.x, " ", rotation_range.y);	
-	
 	var rot_dir = axis.get_rotation_deg().y;
-	
-	#rint (intent_rotation)
 	
 	if (movement_limited):
 		
-		if (is_in_range(rot_dir, rotation_range.x, rotation_range.y)):
+		# CASE IN BETWEEN
+		if (is_in_range(intent_rotation, rotation_range.x, rotation_range.y)):
+			print ("RANGE")
 			var diff_a = abs(rot_dir - rotation_range.x)
 			var diff_b = abs(rot_dir - rotation_range.y)
 			
 			if (diff_a < diff_b):
-				set_player_rotation(rotation_range.x)
+				intent_rotation = rotation_range.x
 			else:
-				set_player_rotation(rotation_range.y)
+				intent_rotation = rotation_range.y
 					
-		if (rotation_range.x < rotation_range.y):			# REGULAR CASE
-			if (rot_dir < rotation_range.x and intent_rotation > rotation_range.x): 				# PLAYER IS PRE WALL								
+		if (rotation_range.x < rotation_range.y):
+			# REGULAR CASE
+			if (rot_dir <= rotation_range.x and intent_rotation >= rotation_range.x): 				# PLAYER IS PRE WALL								
 				return false;
-			elif (rot_dir > rotation_range.y and intent_rotation < rotation_range.y):    			# PLAYER IS POST WALL								
+			elif (rot_dir >= rotation_range.y and intent_rotation <= rotation_range.y):    			# PLAYER IS POST WALL								
 				return false;			
 		else: 												# INVERTED CASE			
 			var aux_norm = normalize_rot(intent_rotation)
-			if (rot_dir < rotation_range.y and aux_norm < rotation_range.y):    			# PLAYER IS POST WALL												
+			if (rot_dir <= rotation_range.y and aux_norm <= rotation_range.y):    			# PLAYER IS POST WALL												
 				return false;
-			elif (rot_dir < rotation_range.x and intent_rotation > rotation_range.x): 				# PLAYER IS PRE WALL								
+			elif (rot_dir <= rotation_range.x and intent_rotation >= rotation_range.x): 				# PLAYER IS PRE WALL								
 				return false;
 	
 	set_player_rotation(normalize_rot(intent_rotation))
