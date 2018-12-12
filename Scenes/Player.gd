@@ -42,7 +42,7 @@ var color
 func limit_rotation_range(allowed_range):
 	movement_limited = true
 	var first  = normalize_rot(allowed_range.x)
-	var second = normalize_rot(allowed_range.y)	
+	var second = normalize_rot(allowed_range.y)		
 	rotation_range = Vector2(first, second)
 
 func unlimit_rotation_range():
@@ -138,17 +138,40 @@ func is_in_range (v, r_a, r_b):
 			return (v > r_b and v < r_a)
 
 func _on_set_rotation (rot):	
-	var intent_rotation = normalize_rot(rot + last_safe_rotation.y)
+	
+	var intent_rotation = rot + last_safe_rotation.y
+	
+	#print (rotation_range.x, " ", rotation_range.y);	
+	
+	var rot_dir = axis.get_rotation_deg().y;
+	
+	#rint (intent_rotation)
+	
+	if (movement_limited):
 		
-	if (movement_limited and is_in_range(intent_rotation, rotation_range.x, rotation_range.y)):
-		if (abs(intent_rotation - rotation_range.x) < abs(intent_rotation - rotation_range.y)):
-			set_player_rotation(rotation_range.x)
-		else:
-			set_player_rotation(rotation_range.y)
-		return false
-		
-	set_player_rotation(intent_rotation)	
-	return true
+		if (is_in_range(rot_dir, rotation_range.x, rotation_range.y)):
+			var diff_a = abs(rot_dir - rotation_range.x)
+			var diff_b = abs(rot_dir - rotation_range.y)
+			
+			if (diff_a < diff_b):
+				set_player_rotation(rotation_range.x)
+			else:
+				set_player_rotation(rotation_range.y)
+					
+		if (rotation_range.x < rotation_range.y):			# REGULAR CASE
+			if (rot_dir < rotation_range.x and intent_rotation > rotation_range.x): 				# PLAYER IS PRE WALL								
+				return false;
+			elif (rot_dir > rotation_range.y and intent_rotation < rotation_range.y):    			# PLAYER IS POST WALL								
+				return false;			
+		else: 												# INVERTED CASE			
+			var aux_norm = normalize_rot(intent_rotation)
+			if (rot_dir < rotation_range.y and aux_norm < rotation_range.y):    			# PLAYER IS POST WALL												
+				return false;
+			elif (rot_dir < rotation_range.x and intent_rotation > rotation_range.x): 				# PLAYER IS PRE WALL								
+				return false;
+	
+	set_player_rotation(normalize_rot(intent_rotation))
+	return true	
 
 func end_animation():
 	ball.queue_free()	
