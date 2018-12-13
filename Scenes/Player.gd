@@ -35,7 +35,6 @@ var movement_limited = false
 
 export (int) var n_platforms_to_meteorize = 3
 
-var meteor_charged = true
 var meteor = false
 var color
 
@@ -97,10 +96,9 @@ func on_platform_passed():
 	if (counter == n_platforms_to_meteorize - 1):
 		rigid.set_gravity_scale(0)
 	
-	if (counter >= n_platforms_to_meteorize):				
-		if (meteor_charged):
-			meteor_particles.set_emitting(true)
-			meteorize()
+	if (counter >= n_platforms_to_meteorize):						
+		meteor_particles.set_emitting(true)
+		meteorize()
 					
 
 func lock_rot():
@@ -191,10 +189,7 @@ func _on_Area_body_enter(body):
 	meteor_particles.set_emitting(false)
 	rigid.set_gravity_scale(1)	
 	
-	if (!meteor_charged):
-			meteor_charged = true
-	
-	if (!meteor && decal_raycast.is_colliding() and decal_raycast.get_collider().is_in_group("bad")):		
+	if (!meteor && decal_raycast.is_colliding() and decal_raycast.get_collider().is_in_group("bad")):
 		die()
 		
 	else:
@@ -203,7 +198,6 @@ func _on_Area_body_enter(body):
 			global.update_points(100)
 			global.update_progress()
 			body.get_parent().get_parent().get_parent().get_parent().meteorize()			
-			meteor_charged = false
 			big_splash.set_emitting(true)					
 			rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,120,0))
 			release_camera()
@@ -238,8 +232,7 @@ func power_up():
 
 func meteorize():
 	light.set_enabled(true)
-	meteor = true
-	meteor_charged = false	
+	meteor = true	
 
 func _on_Timer_timeout():
 	global.handle_lose()
