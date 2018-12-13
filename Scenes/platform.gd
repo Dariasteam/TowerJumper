@@ -68,9 +68,7 @@ func send_next_platform_limits():
 		global.player.unlimit_rotation_range()
 
 func explode():
-	send_next_platform_limits()
-	if (global.sound_enabled):
-		get_node("RegularExplosion").play()
+	send_next_platform_limits()	
 	area.queue_free()
 	for child in children.get_children():
 		child.explode()
@@ -86,5 +84,7 @@ func meteorize():
 func _on_Deleter_body_enter( body ):		
 	if (!body.is_in_group("camera")):
 		body.get_parent().on_platform_passed()
+		if (global.sound_enabled):
+			get_node("RegularExplosion").play()
 		explode()
 	
