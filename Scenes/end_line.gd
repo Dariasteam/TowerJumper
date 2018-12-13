@@ -3,6 +3,7 @@ extends Area
 var segment = preload ("res://Scenes/Regular_Segment.tscn")
 const SEGMENTS = 16
 onready var offset = float(360) / SEGMENTS
+var allowed_range = Vector2(-1,-1)
 
 func _on_Area_body_enter( body ):
 	body.get_parent().end_animation()

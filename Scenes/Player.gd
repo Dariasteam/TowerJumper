@@ -38,13 +38,14 @@ export (int) var n_platforms_to_meteorize = 3
 var meteor = false
 var color
 
-func limit_rotation_range(allowed_range):
+func limit_rotation_range(allowed_range):	
 	movement_limited = true
 	var first  = normalize_rot(allowed_range.x)
-	var second = normalize_rot(allowed_range.y)		
+	var second = normalize_rot(allowed_range.y)
 	rotation_range = Vector2(first, second)
 
-func unlimit_rotation_range():
+
+func unlimit_rotation_range():	
 	movement_limited = false
 
 func _ready():
@@ -84,8 +85,7 @@ func release_camera():
 func on_platform_passed():
 	release_camera()
 	rigid_2.set_linear_velocity(rigid.get_linear_velocity())	
-	
-	unlimit_rotation_range()
+		
 	global.update_points((counter + 1) * 10)
 	global.update_progress()
 	

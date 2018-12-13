@@ -13,10 +13,17 @@ func instance_in (element, i):
 	element.translate (Vector3(0, -1 * i * space , 0))
 	add_child(element)
 
-func _ready():	
-	instance_in(first_platform.instance(), 0)	
+func _ready():		
+	var prev_platform = first_platform.instance()
+	instance_in(prev_platform, 0)		
 	
 	for i in range (1, n_platforms):
-		instance_in(platform.instance(), i)		
+		var new_platform = platform.instance();
+		prev_platform.next_platform = new_platform
+		instance_in(new_platform, i)
+		prev_platform = new_platform
 		
-	instance_in(end_line.instance(), n_platforms)
+	var end = end_line.instance()
+	prev_platform.next_platform = end
+	instance_in(end, n_platforms)
+	
