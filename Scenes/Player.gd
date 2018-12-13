@@ -189,7 +189,8 @@ func _on_Area_body_enter(body):
 	meteor_particles.set_emitting(false)
 	rigid.set_gravity_scale(1)	
 	
-	if (!meteor && decal_raycast.is_colliding() and decal_raycast.get_collider().is_in_group("bad")):
+	var decal_collider = decal_raycast.get_collider();
+	if (!meteor and decal_raycast.is_colliding() and decal_collider != null and decal_collider.is_in_group("bad")):
 		die()
 		
 	else:
