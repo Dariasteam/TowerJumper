@@ -17,11 +17,9 @@ func handle_pos (pos):
 		game.lock_rot();
 	
 func _input(event):	
+	if (event.type==InputEvent.SCREEN_TOUCH):
+		last_pos = get_local_mouse_pos().x
+		game.lock_rot();
 	if (event.type==InputEvent.SCREEN_DRAG):
-       handle_pos (float(-(event.pos.x - last_pos) * 100) / width)	
+       handle_pos (float(-(get_local_mouse_pos().x - last_pos) * 100) / width)	
 	
-func _on_TouchScreenButton_pressed():	
-	last_pos = get_local_mouse_pos().x
-	game.lock_rot();
-
-
