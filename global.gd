@@ -9,6 +9,9 @@ var mat_power_up_1
 var environment_palette = []
 var current_palette
 
+var shadows_button_pattern = [[]]
+var sound_button_pattern = [[]]
+
 var player
 
 onready var shadows_enabled = true
@@ -76,7 +79,10 @@ func load_palette():
 		environment_palette.push_back(element)
 	
 	mat_player.set_parameter(FixedMaterial.PARAM_DIFFUSE, Color(content["player"]))
-	
+			
+	shadows_button_pattern = content["shadow_button_pattern"]
+	sound_button_pattern = content["sound_button_pattern"]
+		
 func save_game():
 	var savedict = {
 		total_points = total_points,
@@ -101,10 +107,10 @@ func load_game():
 	currentline.parse_json(savegame.get_line())
 	total_points = currentline["total_points"]
 	level = currentline["level"]
-	
-	
+		
 	if currentline.has("shadows_enabled"):
 		shadows_enabled = currentline["shadows_enabled"]
 		sound_enabled = currentline["sound_enabled"]
 	savegame.close()
+		
 

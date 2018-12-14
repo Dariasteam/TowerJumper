@@ -18,5 +18,13 @@
     ["b7ecfe", "528ef5", "4754c4"],
     ["fd9e9e", "db683b", "e2ea45"],
     ["d8d8d8", "414141", "7b5f5f"],
-  ]
+  ],
+  "shadow_button_pattern" : {
+    "enabled"  : [0, 0, 0, 0, 1, 1, 1, 1],
+    "disabled" : [0, 0, 0, 0, 2, 2, 2, 2],
+  },
+  "sound_button_pattern" : {
+    "enabled"  : [0, 1, 0, 0, 1, 1, 1, 0],
+    "disabled" : [0, 2, 0, 0, 2, 2, 2, 0]
+  }
 }
