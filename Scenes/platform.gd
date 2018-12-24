@@ -1,20 +1,9 @@
-extends Spatial
+extends "res://abstract_platform.gd"
 
 export(float) var velocity = 1
 
-onready var children = get_node("Children")
-onready var area = get_node("Deleter")
-
-var segment = preload ("res://Scenes/Regular_Segment.tscn")
 var segment_tall = preload ("res://Scenes/Segment_Tall.tscn")
 var segment_movement = preload ("res://Scenes/Segment_Double.tscn")
-
-var next_platform
-
-var allowed_range = Vector2(-1,-1)
-
-const SEGMENTS = 16
-onready var offset = float(360) / SEGMENTS
 
 func _ready():
 	
@@ -81,10 +70,7 @@ func meteorize():
 		child.meteorize()
 	explode()
 
-func _on_Deleter_body_enter( body ):		
-	if (!body.is_in_group("camera")):
-		body.get_parent().on_platform_passed()
-		if (global.sound_enabled):
-			get_node("RegularExplosion").play()
-		explode()
+func _on_Deleter_body_enter( body ):
+	delete_enter (body)	
+	
 	

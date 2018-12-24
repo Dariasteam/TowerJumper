@@ -11,7 +11,6 @@ extents = Vector3( 0.27822, 0.211002, 0.261824 )
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script/script = ExtResource( 1 )
-velocity = 0.0
 
 [node name="Children" type="Spatial" parent="."]
 
@@ -49,7 +48,7 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="StreamPlayer" type="StreamPlayer" parent="."]
+[node name="RegularExplosion" type="StreamPlayer" parent="."]
 
 stream/stream = ExtResource( 2 )
 stream/play = false
