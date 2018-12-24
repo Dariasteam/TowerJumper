@@ -18,10 +18,10 @@ func _ready():
 	instance_in(prev_platform, 0)		
 
 	if (global.level > 16):
-		n_platforms += ((global.level - 16) / 2) 
+		n_platforms += ((global.level - 16) / 3) 
 		global.level_size = n_platforms
 		
-	col.set_scale(Vector3(col.get_scale().x, col.get_scale().y * n_platforms, col.get_scale().z))
+	col.set_scale(Vector3(col.get_scale().x, n_platforms + n_platforms * 0.0035, col.get_scale().z))
 	col.set_translation(Vector3 (0, -(n_platforms * space / 2) + 0.5, 0))
 	
 	print (-(n_platforms * space))
