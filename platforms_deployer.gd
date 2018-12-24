@@ -22,9 +22,7 @@ func _ready():
 		global.level_size = n_platforms
 		
 	col.set_scale(Vector3(col.get_scale().x, n_platforms + n_platforms * 0.0035, col.get_scale().z))
-	col.set_translation(Vector3 (0, -(n_platforms * space / 2) + 0.5, 0))
-	
-	print (-(n_platforms * space))
+	col.set_translation(Vector3 (0, -(n_platforms * space / 2) + 0.5, 0))	
 		
 	for i in range (1, n_platforms):
 		var new_platform = platform.instance();
