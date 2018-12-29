@@ -1,14 +1,14 @@
 extends Quad
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+onready var color = Color (get_tree().get_nodes_in_group("player")[0].color)
 
-func _ready():
-	var color = get_tree().get_nodes_in_group("player")[0].color
+func _ready():	
+	var mat = get_material_override().duplicate()
+	set_material_override(mat)
 	get_material_override().set_parameter(FixedMaterial.PARAM_DIFFUSE, color)
-	pass
 
-
-func _on_Timer_timeout():
-	queue_free()
+func _on_OpacityTimer_timeout():
+	if (color.a <= 0):
+		queue_free()
+	color.a -= 0.001
+	get_material_override().set_parameter(FixedMaterial.PARAM_DIFFUSE, color)

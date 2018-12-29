@@ -65,13 +65,13 @@ quad/offset = Vector2( 0, 0 )
 quad/centered = true
 script/script = ExtResource( 2 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="OpacityTimer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 10.0
-one_shot = true
+wait_time = 0.01
+one_shot = false
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="OpacityTimer" to="." method="_on_OpacityTimer_timeout"]
 
 

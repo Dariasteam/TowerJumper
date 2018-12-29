@@ -13,7 +13,7 @@ func _ready():
 	
 	for i in range(0, 14):
 		var aux = null
-		var rand = (randi()%20+1)
+		var rand = (randi()% 20+1)
 		var rot = ((offset * i) + angle_offset) + 7
 		
 		if (rand >= 17):
