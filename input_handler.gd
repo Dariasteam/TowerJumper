@@ -13,7 +13,7 @@ func _ready():
 func handle_pos (pos):	
 	if (!game.receive_input (pos)):		
 		game.lock_rot();		
-		last_pos = get_local_mouse_pos().x		
+		last_pos = get_local_mouse_pos().x
 		
 func _input(event):
 	if (event.type==InputEvent.SCREEN_TOUCH):
@@ -33,4 +33,4 @@ func _input(event):
 		touchs_vec[event.index] = event.pos.x
 		var a = event.pos.x
 		if (touchs_vec.size() == 1):
-			handle_pos (stepify(((-(event.pos.x - last_pos) * 300) / width), 0.01))
+			handle_pos (stepify(((-(event.pos.x - last_pos) * 300) / width), 0.1))
