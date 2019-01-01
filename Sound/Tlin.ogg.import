@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Tlin.ogg-a0c06adcff4109c3d15ca04b06671080.oggstr"
+
+[deps]
+
+source_file="res://Sound/Tlin.ogg"
+dest_files=[ "res://.import/Tlin.ogg-a0c06adcff4109c3d15ca04b06671080.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

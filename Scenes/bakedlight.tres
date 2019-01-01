@@ -1,4 +1,5 @@
-[gd_resource type="BakedLight" format=1]
+[gd_resource type="BakedLight" load_steps=1 format=2]
+
 
 [resource]
 
@@ -17,9 +18,9 @@ baking_flags/translucent = true
 baking_flags/conserve_energy = false
 baking_flags/linear_color = false
 lightmap/use_only_uv2 = false
-octree = ByteArray(  )
-light = ByteArray(  )
-sampler_octree = IntArray(  )
+octree = PoolByteArray(  )
+light = PoolByteArray(  )
+sampler_octree = PoolIntArray(  )
 lightmaps = [  ]
 advanced/cell_margin = 0.05
 advanced/edge_damp = 0.0
@@ -30,4 +31,3 @@ advanced/ao_strength = 0.7
 realtime/enabled = true
 realtime/color = Color( 1, 1, 1, 1 )
 realtime/energy = 1.0
-

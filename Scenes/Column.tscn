@@ -1,79 +1,34 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Column.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://platforms_deployer.gd" type="Script" id=3]
 [ext_resource path="res://Materials/mat_column.tres" type="Material" id=4]
-[ext_resource path="res://Mesh/column.msh" type="Mesh" id=5]
+[ext_resource path="res://Mesh/column.mesh" type="ArrayMesh" id=5]
 [ext_resource path="res://Scenes/PowerUP.tscn" type="PackedScene" id=6]
 
 [node name="Spatial" type="Spatial"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.27751, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40378, 0 )
 
 [node name="Axis" type="Spatial" parent="."]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-script/script = ExtResource( 3 )
-space = 7
-n_platforms = 30
+script = ExtResource( 3 )
 
 [node name="Column" type="MeshInstance" parent="Axis"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 2.55, 0, 0, 0, 1, 0, 0, 0, 2.55, 0, 0, 0 )
-layers = 1
-geometry/visible = true
-geometry/material_override = ExtResource( 4 )
-geometry/cast_shadow = 1
-geometry/receive_shadows = true
-geometry/range_begin = 0.0
-geometry/range_end = 0.0
-geometry/extra_cull_margin = 0.0
-geometry/billboard = false
-geometry/billboard_y = false
-geometry/depth_scale = false
-geometry/visible_in_all_rooms = false
-geometry/use_baked_light = true
-geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 5 )
-mesh/skeleton = NodePath("..")
+transform = Transform( 2.55, 0, 0, 0, 1, 0, 0, 0, 2.55, 0, 0, 0 )
+material_override = ExtResource( 4 )
+use_in_baked_light = true
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." groups=[
 "light",
 ]]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.403186, 0.638602, -0.65546, 0, 0.716257, 0.697836, 0.915118, -0.281357, 0.288785, 0, 0, -21.773 )
-layers = 1
-params/enabled = true
-params/editor_only = false
-params/bake_mode = 3
-params/energy = 0.45
-colors/diffuse = Color( 1, 1, 1, 1 )
-colors/specular = Color( 1, 1, 1, 1 )
-shadow/shadow = true
-shadow/darkening = 0.0
-shadow/z_offset = 0.3
-shadow/z_slope_scale = 5.0
-shadow/esm_multiplier = 60.0
-shadow/blur_passes = 1.0
-projector = null
-operator = 0
-shadow/mode = 0
-shadow/max_distance = 40.0
-shadow/split_weight = 0.65
-shadow/zoffset_scale = 0.01
+transform = Transform( 0.403186, 0.638602, -0.65546, 0, 0.716257, 0.697836, 0.915118, -0.281357, 0.288785, 0, 0, -21.773 )
 
 [node name="Spatial" parent="." instance=ExtResource( 6 )]
-
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83688, 17.4298, 2.56991 )
-visibility/visible = false
-
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83688, 17.4298, 2.56991 )
+visible = false
 

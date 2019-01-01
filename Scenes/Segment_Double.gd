@@ -22,8 +22,8 @@ func explode():
 
 func meteorize():	
 	get_node("REGULAR/StaticBody").queue_free()
-	var mat = FixedMaterial.new()
-	var color = get_tree().get_nodes_in_group("player")[0].color	
-	mat.set_parameter(FixedMaterial.PARAM_DIFFUSE, color)
+	var mat = SpatialMaterial.new()
+	var color = get_tree().get_nodes_in_group("player")[0].color		
+	mat.albedo_color = color
 	get_node("REGULAR/Cover").set_material_override(mat)
 	get_node("REGULAR").set_material_override(mat)

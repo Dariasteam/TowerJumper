@@ -4,9 +4,9 @@ func _on_Area_body_enter( body ):
 	body.get_parent().end_animation()
 	
 	if (global.sound_enabled):	
-		get_node("StreamPlayer").play(1)
-	disconnect("body_enter", self, "_on_Area_body_enter")
-	set_enable_monitoring(false)
+		get_node("AudioStreamPlayer").play(1)
+	disconnect("body_enter", self, "_on_Area_body_enter")	
+	get_node(".").set_monitoring (false)
 	get_node("Timer").start()	
 	for child in get_node("Children").get_children():
 		child.explode()
@@ -23,3 +23,4 @@ func meteorize():
 
 func _on_Timer_timeout():	
 	global.handle_win()
+

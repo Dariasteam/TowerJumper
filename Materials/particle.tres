@@ -1,11 +1,11 @@
-[gd_resource type="FixedMaterial" load_steps=2 format=1]
+[gd_resource type="SpatialMaterial" load_steps=1 format=2]
 
 [ext_resource path="res://Sprites/Particle.png" type="Texture" id=1]
 
 [resource]
 
 flags/visible = true
-flags/double_sided = false
+double_sided = false
 flags/invert_faces = false
 flags/unshaded = true
 flags/on_top = false
@@ -39,4 +39,3 @@ textures/specular_exp_tc = 0
 textures/glow_tc = 0
 textures/normal_tc = 0
 textures/shade_param_tc = 0
-

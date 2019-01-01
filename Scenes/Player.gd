@@ -40,8 +40,8 @@ var color
 
 func limit_rotation_range(allowed_range):	
 	movement_limited = true
-	var first  = normalize_rot(allowed_range.x)
-	var second = normalize_rot(allowed_range.y)
+	var first  = normalize_rotation(allowed_range.x)
+	var second = normalize_rotation(allowed_range.y)
 	rotation_range = Vector2(first, second)
 
 
@@ -51,11 +51,12 @@ func unlimit_rotation_range():
 func _ready():
 	global.player = self
 	ball.set_material_override(global.mat_player)
-	color = global.mat_player.get_parameter(FixedMaterial.PARAM_DIFFUSE)
-	trail.get_material().set_parameter(FixedMaterial.PARAM_DIFFUSE, color)
-	trail.get_material().set_fixed_flag(FixedMaterial.FLAG_USE_ALPHA, true)
-	trail.get_material().set_flag(FixedMaterial.FLAG_UNSHADED, true)
-	light.set_color(1,color)
+	color = global.mat_player.albedo_color
+	# CHANGED
+	#trail.get_material().albedo_color = color
+	#trail.get_material().set_fixed_flag(SpatialMaterial.FLAG_USE_ALPHA, true)
+	#trail.get_material().set_flag(SpatialMaterial.FLAG_UNSHADED, true)
+	light.set_color(color)
 
 func die():
 	trail.set_emitting(false)
@@ -90,6 +91,7 @@ func on_platform_passed():
 	global.update_progress()
 	
 	if (counter == 1 and global.sound_enabled):
+		pass		
 		acceleration_sound.play(1.5)
 	
 	counter += 1
@@ -101,10 +103,11 @@ func on_platform_passed():
 		meteorize()
 					
 
-func lock_rot():	
-	last_safe_rotation = axis.get_rotation_deg().y	
+func lock_rotation():	
+	last_safe_rotation = axis.rotation_degrees.y
+	
 
-func normalize_rot(rot):	
+func normalize_rotation(rot):	
 	while (rot < 0):
 		rot += 360
 	while (rot > 360):
@@ -113,17 +116,17 @@ func normalize_rot(rot):
 	return rot
 
 func set_player_rotation (value):
-	axis.set_rotation_deg(Vector3(0,value,0))
-	camera_axis.set_rotation_deg(Vector3(0,value,0))
+	axis.rotation_degrees = Vector3(0,value,0)
+	camera_axis.rotation_degrees = Vector3(0,value,0)
 
 
 func is_in_range (v, r_a, r_b):
 	return v > r_a and v < r_b
 			
 
-func _on_set_rotation (rot):
+func _on_set_rotation (rot):	
 	var intent_rotation = rot + last_safe_rotation
-	var current_rotation = axis.get_rotation_deg().y;	
+	var current_rotation = axis.rotation_degrees.y;	
 
 	var has_collided = false	
 	var is_left = true	
@@ -131,14 +134,14 @@ func _on_set_rotation (rot):
 	if (movement_limited):		
 		# "Change basis" so first wall is at 180 degrees				
 		var adjustment_offset = -rotation_range.x
-		var local_normalized_intent_rotation = normalize_rot(intent_rotation + adjustment_offset)
-		var local_current_rotation =           normalize_rot(current_rotation + adjustment_offset)
+		var local_normalized_intent_rotation = normalize_rotation(intent_rotation + adjustment_offset)
+		var local_current_rotation =           normalize_rotation(current_rotation + adjustment_offset)
 		var local_rotation_range = 			   Vector2 (0, 0)
 		
 		# "Change basis" so second wall is at 180 degrees
 		adjustment_offset = -rotation_range.y		
-		var local_normalized_intent_rotation_2 = normalize_rot(intent_rotation + adjustment_offset)
-		var local_current_rotation_2 =           normalize_rot(current_rotation + adjustment_offset)
+		var local_normalized_intent_rotation_2 = normalize_rotation(intent_rotation + adjustment_offset)
+		var local_current_rotation_2 =           normalize_rotation(current_rotation + adjustment_offset)
 		var local_rotation_range_2 =             Vector2(0, 0)
 		
 		#print ("R ", local_rotation_range, " ", intent_rotation, " ", current_rotation)		
@@ -157,22 +160,27 @@ func _on_set_rotation (rot):
 						
 		if (!is_left):			
 			if (local_normalized_intent_rotation >= local_current_rotation - 1 and 
-				local_normalized_intent_rotation < 360):				
+				local_normalized_intent_rotation < 359):
+				#print ("GOOD A")
 				pass
-			else:				
-				intent_rotation = rotation_range.x - 1				
+			else:
+				print ("BAD A", rotation_range.x)
+				intent_rotation = rotation_range.x				
 				has_collided = true				
 		else:
 			if (local_normalized_intent_rotation_2 > 0 and
-				local_normalized_intent_rotation_2 <= local_current_rotation_2 + 1):				
+				local_normalized_intent_rotation_2 <= local_current_rotation_2 + 1):
+				#print ("GOOD B")
 				pass
 			else:
+				print ("BAD B")
 				intent_rotation = rotation_range.y
 				has_collided = true
-
+	
+	print ("moviendo a ", intent_rotation, " desde ", current_rotation)
 
 	prev_frame_rotation = intent_rotation
-	set_player_rotation(normalize_rot(intent_rotation))
+	set_player_rotation(normalize_rotation(intent_rotation))
 	return !has_collided
 
 func end_animation():
@@ -187,10 +195,10 @@ func end_animation():
 	die_particles.set_emitting(true)
 	
 		
-func _on_Area_body_enter(body):	
+func _on_Area_body_entered(body):	
 	rigid.set_linear_velocity(Vector3(0,0,0))
 
-	light.set_enabled(false)
+	light.visible = false	
 	acceleration_sound.stop()
 
 	meteor_particles.set_emitting(false)
@@ -211,8 +219,9 @@ func _on_Area_body_enter(body):
 			release_camera()
 			rigid_2.apply_impulse(Vector3(0,0,0), Vector3(0,120,0))
 		else:
-			if (global.sound_enabled):
+			if (global.sound_enabled):								
 				jump_sound.play(0)
+				
 			var aux = decal.instance()
 			body.get_parent().add_child(aux)
 			var tr = aux.get_global_transform()
@@ -223,7 +232,7 @@ func _on_Area_body_enter(body):
 				
 		
 		rigid.apply_impulse(Vector3(0,0,0), Vector3(0,70,0))
-		splash.set_emitting(true)
+		splash.set_emitting(true)		
 		animation.play("squeeze")
 			
 		counter = 0
@@ -231,23 +240,25 @@ func _on_Area_body_enter(body):
 	
 func power_up():
 	ball.set_material_override(global.mat_power_up_1)
-	color = global.mat_power_up_1.get_parameter(FixedMaterial.PARAM_DIFFUSE)
-	trail.get_material().set_parameter(FixedMaterial.PARAM_DIFFUSE, color)
-	trail.get_material().set_fixed_flag(FixedMaterial.FLAG_USE_ALPHA, true)
-	trail.get_material().set_flag(FixedMaterial.FLAG_UNSHADED, true)
+	color = global.mat_power_up_1.get_parameter(SpatialMaterial.PARAM_DIFFUSE)
+	trail.get_material().set_parameter(SpatialMaterial.PARAM_DIFFUSE, color)
+	trail.get_material().set_fixed_flag(SpatialMaterial.FLAG_USE_ALPHA, true)
+	trail.get_material().set_flag(SpatialMaterial.FLAG_UNSHADED, true)
 	light.set_color(1,color)	
 	
 
 func meteorize():
-	light.set_enabled(true)
+	light.visible = (true)
 	meteor = true	
 
 func _on_Timer_timeout():
 	global.handle_lose()
 
-func _on_Area_body_exit( body ):	
+func _on_Area_body_exited( body ):	
 	colliding = false
 
-func _on_Area_area_enter( area ):	
+func _on_Area_area_entered( area ):	
 	if (area.is_in_group("deleter") and !meteor):
 		block_camera()
+
+

@@ -1,9 +1,10 @@
-[gd_resource type="FixedMaterial" format=1]
+[gd_resource type="SpatialMaterial" load_steps=1 format=2]
+
 
 [resource]
 
 flags/visible = true
-flags/double_sided = false
+double_sided = false
 flags/invert_faces = false
 flags/unshaded = false
 flags/on_top = false
@@ -36,4 +37,3 @@ textures/specular_exp_tc = 0
 textures/glow_tc = 0
 textures/normal_tc = 0
 textures/shade_param_tc = 0
-

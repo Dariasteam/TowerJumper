@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/PowerUP.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Decal.png" type="Texture" id=2]
 
-[sub_resource type="FixedMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=1]
 
 flags/visible = true
-flags/double_sided = false
+double_sided = false
 flags/invert_faces = false
 flags/unshaded = true
 flags/on_top = false
@@ -48,36 +48,36 @@ extents = Vector3( 1, 1, 1 )
 [node name="PowerUp" type="Spatial"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
 
 [node name="Particles" type="Particles" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 layers = 1
 geometry/visible = true
-geometry/material_override = null
-geometry/cast_shadow = 1
+material_override = null
+cast_shadow = 1
 geometry/receive_shadows = true
 geometry/range_begin = 0.0
 geometry/range_end = 0.0
-geometry/extra_cull_margin = 0.0
+extra_cull_margin = 0.0
 geometry/billboard = false
 geometry/billboard_y = false
 geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
-geometry/use_baked_light = false
+use_in_baked_light = false
 geometry/baked_light_tex_id = 0
 material = SubResource( 1 )
 amount = 64
 emitting = true
-visibility = AABB( -4, -4, -4, 8, 8, 8 )
+visibility_aabb = Rect3( -4, -4, -4, 8, 8, 8 )
 emission_extents = Vector3( 0.1, 0.1, 0.1 )
 emission_base_velocity = Vector3( 0, 0, 0 )
-emission_points = Vector3Array(  )
+emission_points = PoolVector3Array(  )
 gravity_normal = Vector3( 0, -1, 0 )
 local_coords = false
 emit_timeout = 0.0
-vars/lifetime = 0.6
+lifetime = 0.6
 vars/spread = 1.0
 vars/gravity = 0.0
 vars/linear_vel = 2.0
@@ -119,8 +119,8 @@ phase_3/color = Color( 0, 0, 0, 1 )
 [node name="Area" type="Area" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-input/ray_pickable = false
-input/capture_on_drag = false
+input_ray_pickable = false
+input_capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -135,8 +135,8 @@ angular_damp = 1.0
 priority = 0.0
 monitoring = true
 monitorable = true
-collision/layers = 3
-collision/mask = 3
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 
@@ -152,8 +152,6 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[connection signal="area_enter" from="Area" to="." method="_on_Area_area_enter"]
+[connection signal="area_entered" from="Area" to="." method="_on_Area_area_enter" binds=[  ]]
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-
-
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout" binds=[  ]]

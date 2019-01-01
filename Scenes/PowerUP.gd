@@ -6,8 +6,8 @@ extends Spatial
 
 func _ready():
 	return
-	var color = global.mat_power_up_1.get_parameter(FixedMaterial.PARAM_DIFFUSE)
-	get_node("Particles").get_material().set_parameter(FixedMaterial.PARAM_DIFFUSE, color)
+	var color = global.mat_power_up_1.get_parameter(SpatialMaterial.PARAM_DIFFUSE)
+	get_node("Particles").get_material().set_parameter(SpatialMaterial.PARAM_DIFFUSE, color)
 	
 
 func _on_Area_area_enter( area ):
@@ -19,3 +19,4 @@ func _on_Area_area_enter( area ):
 
 func _on_Timer_timeout():
 	queue_free()
+

@@ -44,3 +44,4 @@ func _on_Button_pressed():
 	global[config_name] = !global[config_name]
 	animator.play("Change")
 	
+

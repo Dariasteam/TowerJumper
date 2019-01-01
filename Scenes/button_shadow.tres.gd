@@ -32,7 +32,7 @@ func _ready():
 	change();
 
 func change():
-	light.set_project_shadows (global[config_name])
+	light.shadow_enabled = global[config_name]
 	var aux_pattern
 	
 	if (global[config_name]):
@@ -47,3 +47,4 @@ func _on_Button_pressed():
 	global[config_name] = !global[config_name]
 	animator.play("Change")
 	
+

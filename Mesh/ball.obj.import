@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ball.obj-4bdab7ada9c7019bd6c547b645cada80.mesh"
+
+[deps]
+
+files=[ "res://.import/ball.obj-4bdab7ada9c7019bd6c547b645cada80.mesh" ]
+
+source_file="res://Mesh/ball.obj"
+dest_files=[ "res://.import/ball.obj-4bdab7ada9c7019bd6c547b645cada80.mesh", "res://.import/ball.obj-4bdab7ada9c7019bd6c547b645cada80.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

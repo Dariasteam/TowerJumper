@@ -35,7 +35,7 @@ func _ready():
 			
 		
 		if (aux != null):
-			aux.set_rotation_deg(Vector3(0,rot,0))
+			aux.rotation_degrees = Vector3(0,rot,0)
 			children.add_child(aux)
 	
 	if (!cant_move):
@@ -74,3 +74,4 @@ func _on_Deleter_body_enter( body ):
 	delete_enter (body)	
 	
 	
+

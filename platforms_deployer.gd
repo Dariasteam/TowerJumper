@@ -34,3 +34,4 @@ func _ready():
 	prev_platform.next_platform = end
 	instance_in(end, n_platforms)
 	
+

@@ -38,3 +38,4 @@ func delete_enter ( body ):
 			get_node("RegularExplosion").play()
 		explode()
 	
+
