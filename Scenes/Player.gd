@@ -157,12 +157,12 @@ func _on_set_rotation (rot):
 						
 		if (!is_left):			
 			if (local_normalized_intent_rotation >= local_current_rotation - 1 and 
-				local_normalized_intent_rotation < 359):
+				local_normalized_intent_rotation < 360):
 				#print ("GOOD A")
 				pass
 			else:
-				print ("BAD A", rotation_range.x)
-				intent_rotation = rotation_range.x				
+				#print ("BAD A", rotation_range.x)
+				intent_rotation = rotation_range.x - 1				
 				has_collided = true				
 		else:
 			if (local_normalized_intent_rotation_2 > 0 and
@@ -170,7 +170,7 @@ func _on_set_rotation (rot):
 				#print ("GOOD B")
 				pass
 			else:
-				print ("BAD B")
+				#print ("BAD B")
 				intent_rotation = rotation_range.y
 				has_collided = true
 	
