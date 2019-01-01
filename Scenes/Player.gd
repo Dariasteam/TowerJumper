@@ -157,24 +157,19 @@ func _on_set_rotation (rot):
 						
 		if (!is_left):			
 			if (local_normalized_intent_rotation >= local_current_rotation - 1 and 
-				local_normalized_intent_rotation < 360):
-				#print ("GOOD A")
+				local_normalized_intent_rotation < 360):				
 				pass
-			else:
-				#print ("BAD A", rotation_range.x)
+			else:				
 				intent_rotation = rotation_range.x - 1				
 				has_collided = true				
 		else:
 			if (local_normalized_intent_rotation_2 > 0 and
-				local_normalized_intent_rotation_2 <= local_current_rotation_2 + 1):
-				#print ("GOOD B")
+				local_normalized_intent_rotation_2 <= local_current_rotation_2 + 1):				
 				pass
 			else:
-				#print ("BAD B")
 				intent_rotation = rotation_range.y
 				has_collided = true
-	
-	print ("moviendo a ", intent_rotation, " desde ", current_rotation)
+
 
 	prev_frame_rotation = intent_rotation
 	set_player_rotation(normalize_rot(intent_rotation))
