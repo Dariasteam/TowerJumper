@@ -11,7 +11,7 @@ func _ready():
 	set_process_input(true)
 
 func handle_pos (pos):	
-	var rot_pos = stepify(((-(pos - last_pos) * 300) / width), 0.1)
+	var rot_pos = ((-(pos - last_pos) * 300) / width)
 	if (!game.receive_input (rot_pos)):		
 		game.lock_rot();		
 		last_pos = pos

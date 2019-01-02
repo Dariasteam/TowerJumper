@@ -23,6 +23,9 @@ onready var acceleration_sound = get_node("AccelerationSound")
 
 var colliding = false
 
+# number of complete loops made 
+var rotation_acumulator = 0
+
 var prev_frame_rotation = 0
 
 var decal = preload("res://Scenes/decal.tscn")
@@ -113,6 +116,7 @@ func normalize_rot(rot):
 	return rot
 
 func set_player_rotation (value):
+	rotation_acumulator = int(value / 360)	
 	axis.set_rotation_deg(Vector3(0,value,0))
 	camera_axis.set_rotation_deg(Vector3(0,value,0))
 
@@ -130,18 +134,18 @@ func _on_set_rotation (rot):
 	
 	if (movement_limited):		
 		# "Change basis" so first wall is at 180 degrees				
-		var adjustment_offset = -rotation_range.x
-		var local_normalized_intent_rotation = normalize_rot(intent_rotation + adjustment_offset)
-		var local_current_rotation =           normalize_rot(current_rotation + adjustment_offset)
-		var local_rotation_range = 			   Vector2 (0, 0)
+		var adjustment_offset = -rotation_range.x + (rotation_acumulator * 360)
+		var local_normalized_intent_rotation = (intent_rotation + adjustment_offset)
+		var local_current_rotation =           (current_rotation + adjustment_offset)
+		var local_rotation_range = 			   Vector2 (rotation_range.x + (rotation_acumulator * 360), 0)
 		
 		# "Change basis" so second wall is at 180 degrees
-		adjustment_offset = -rotation_range.y		
-		var local_normalized_intent_rotation_2 = normalize_rot(intent_rotation + adjustment_offset)
-		var local_current_rotation_2 =           normalize_rot(current_rotation + adjustment_offset)
-		var local_rotation_range_2 =             Vector2(0, 0)
+		adjustment_offset = -rotation_range.y + (rotation_acumulator * 360)	
+		var local_normalized_intent_rotation_2 = (intent_rotation + adjustment_offset)
+		var local_current_rotation_2 =           (current_rotation + adjustment_offset)
+		var local_rotation_range_2 =             Vector2(0, rotation_range.y + (rotation_acumulator * 360))
 		
-		#print ("R ", local_rotation_range, " ", intent_rotation, " ", current_rotation)		
+		print ("R ", local_rotation_range.x, " ", intent_rotation, " ", local_rotation_range_2.y)		
 		
 		if (intent_rotation > prev_frame_rotation):
 			is_left = false
@@ -154,25 +158,22 @@ func _on_set_rotation (rot):
 				intent_rotation = rotation_range.x
 			else:
 				intent_rotation = rotation_range.y
+	
 						
-		if (!is_left):			
-			if (local_normalized_intent_rotation >= local_current_rotation - 1 and 
-				local_normalized_intent_rotation < 360):				
-				pass
-			else:				
-				intent_rotation = rotation_range.x - 1				
-				has_collided = true				
-		else:
-			if (local_normalized_intent_rotation_2 > 0 and
-				local_normalized_intent_rotation_2 <= local_current_rotation_2 + 1):				
-				pass
-			else:
-				intent_rotation = rotation_range.y
-				has_collided = true
+		#if (!is_left):  # FIRST SEGMENT
+		if (current_rotation < local_rotation_range.x and intent_rotation > local_rotation_range.x):
+			print (intent_rotation, " < ", local_rotation_range.x)
+			intent_rotation = local_rotation_range.x - 1
+			has_collided = true
+		#else:			# SECOND SEGMENT
+		if (current_rotation > local_rotation_range_2.y and intent_rotation < local_rotation_range_2.y):
+			print (intent_rotation, " < ", local_rotation_range_2.y)
+			intent_rotation = local_rotation_range_2.y + 1
+			has_collided = true
 
 
 	prev_frame_rotation = intent_rotation
-	set_player_rotation(normalize_rot(intent_rotation))
+	set_player_rotation(intent_rotation)
 	return !has_collided
 
 func end_animation():
