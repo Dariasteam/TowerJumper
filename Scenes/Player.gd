@@ -26,13 +26,11 @@ var colliding = false
 # number of complete loops made 
 var rotation_acumulator = 0
 
-var prev_frame_rotation = 0
-
 var decal = preload("res://Scenes/decal.tscn")
 
 onready var last_safe_rotation = axis.get_rotation().y
 
-var counter = 0
+var platforms_counter = 0
 var rotation_range = Vector2(0,0)
 var movement_limited = false
 
@@ -89,17 +87,17 @@ func on_platform_passed():
 	release_camera()
 	rigid_2.set_linear_velocity(rigid.get_linear_velocity())
 		
-	global.update_points((counter + 1) * 10)
+	global.update_points((platforms_counter + 1) * 10)
 	global.update_progress()
 	
-	if (counter == 1 and global.sound_enabled):
+	if (platforms_counter == 1 and global.sound_enabled):
 		acceleration_sound.play(1.5)
 	
-	counter += 1
-	if (counter == n_platforms_to_meteorize - 1):
+	platforms_counter += 1
+	if (platforms_counter == n_platforms_to_meteorize - 1):
 		rigid.set_gravity_scale(0)
 	
-	if (counter >= n_platforms_to_meteorize):
+	if (platforms_counter >= n_platforms_to_meteorize):
 		meteor_particles.set_emitting(true)
 		meteorize()
 					
@@ -130,16 +128,15 @@ func _on_set_rotation (rot):
 	var current_rotation = axis.get_rotation_deg().y;	
 	var has_collided = false		
 	
-	if (movement_limited):		
-		# "Change basis" so first wall is at 180 degrees				
-		var adjustment_offset = -rotation_range.x + (rotation_acumulator * 360)		
-		var local_rotation_range = 			   Vector2 (rotation_range.x + (rotation_acumulator * 360), 
-														rotation_range.y + (rotation_acumulator * 360))
+	if (movement_limited):									
+		var local_rotation_range = Vector2(0,0)
 		
-		# "Change basis" so second wall is at 180 degrees
-		adjustment_offset = -rotation_range.y + (rotation_acumulator * 360)			
-		var local_current_rotation_2 =           (current_rotation + adjustment_offset)				
-		
+		if (current_rotation >= 0):
+			local_rotation_range = Vector2(rotation_range.x + rotation_acumulator * 360, 
+								    	   rotation_range.y + rotation_acumulator * 360)
+		else:
+			local_rotation_range = Vector2(-(360 - rotation_range.x) + rotation_acumulator * 360, 
+								    	   -(360 - rotation_range.y) + rotation_acumulator * 360)
 		
 		if (is_in_range(current_rotation, local_rotation_range.x, local_rotation_range.y)):
 			var diff_a = abs(current_rotation - local_rotation_range.x)
@@ -150,18 +147,15 @@ func _on_set_rotation (rot):
 			else:
 				intent_rotation = rotation_range.y + 1 
 				
-			has_collided = true 
-	
-								
-		if (current_rotation < local_rotation_range.x and intent_rotation > local_rotation_range.x):			
+			has_collided = true 		
+		
+		if (current_rotation < local_rotation_range.x and intent_rotation > local_rotation_range.x):
 			intent_rotation = local_rotation_range.x - 1
 			has_collided = true		
-		if (current_rotation > local_rotation_range.y and intent_rotation < local_rotation_range.y):			
+		if (current_rotation > local_rotation_range.y and intent_rotation < local_rotation_range.y):
 			intent_rotation = local_rotation_range.y + 1
 			has_collided = true 
-
-
-	prev_frame_rotation = intent_rotation
+	
 	set_player_rotation(intent_rotation)
 	return !has_collided
 
@@ -216,7 +210,7 @@ func _on_Area_body_enter(body):
 		splash.set_emitting(true)
 		animation.play("squeeze")
 			
-		counter = 0
+		platforms_counter = 0
 		meteor = false
 	
 func power_up():
