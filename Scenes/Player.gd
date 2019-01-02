@@ -128,48 +128,37 @@ func is_in_range (v, r_a, r_b):
 func _on_set_rotation (rot):
 	var intent_rotation = rot + last_safe_rotation
 	var current_rotation = axis.get_rotation_deg().y;	
-
-	var has_collided = false	
-	var is_left = true	
+	var has_collided = false		
 	
 	if (movement_limited):		
 		# "Change basis" so first wall is at 180 degrees				
-		var adjustment_offset = -rotation_range.x + (rotation_acumulator * 360)
-		var local_normalized_intent_rotation = (intent_rotation + adjustment_offset)
-		var local_current_rotation =           (current_rotation + adjustment_offset)
-		var local_rotation_range = 			   Vector2 (rotation_range.x + (rotation_acumulator * 360), 0)
+		var adjustment_offset = -rotation_range.x + (rotation_acumulator * 360)		
+		var local_rotation_range = 			   Vector2 (rotation_range.x + (rotation_acumulator * 360), 
+														rotation_range.y + (rotation_acumulator * 360))
 		
 		# "Change basis" so second wall is at 180 degrees
-		adjustment_offset = -rotation_range.y + (rotation_acumulator * 360)	
-		var local_normalized_intent_rotation_2 = (intent_rotation + adjustment_offset)
-		var local_current_rotation_2 =           (current_rotation + adjustment_offset)
-		var local_rotation_range_2 =             Vector2(0, rotation_range.y + (rotation_acumulator * 360))
+		adjustment_offset = -rotation_range.y + (rotation_acumulator * 360)			
+		var local_current_rotation_2 =           (current_rotation + adjustment_offset)				
 		
-		print ("R ", local_rotation_range.x, " ", intent_rotation, " ", local_rotation_range_2.y)		
 		
-		if (intent_rotation > prev_frame_rotation):
-			is_left = false
-		
-		if (is_in_range(local_current_rotation, local_rotation_range.x, local_rotation_range.y) and 100 < 8):
-			var diff_a = abs(local_current_rotation - local_rotation_range.x)
-			var diff_b = abs(local_current_rotation - local_rotation_range.y)
+		if (is_in_range(current_rotation, local_rotation_range.x, local_rotation_range.y)):
+			var diff_a = abs(current_rotation - local_rotation_range.x)
+			var diff_b = abs(current_rotation - local_rotation_range.y)
 			
 			if (diff_a < diff_b):
-				intent_rotation = rotation_range.x
+				intent_rotation = rotation_range.x - 1
 			else:
-				intent_rotation = rotation_range.y
+				intent_rotation = rotation_range.y + 1 
+				
+			has_collided = true 
 	
-						
-		#if (!is_left):  # FIRST SEGMENT
-		if (current_rotation < local_rotation_range.x and intent_rotation > local_rotation_range.x):
-			print (intent_rotation, " < ", local_rotation_range.x)
+								
+		if (current_rotation < local_rotation_range.x and intent_rotation > local_rotation_range.x):			
 			intent_rotation = local_rotation_range.x - 1
-			has_collided = true
-		#else:			# SECOND SEGMENT
-		if (current_rotation > local_rotation_range_2.y and intent_rotation < local_rotation_range_2.y):
-			print (intent_rotation, " < ", local_rotation_range_2.y)
-			intent_rotation = local_rotation_range_2.y + 1
-			has_collided = true
+			has_collided = true		
+		if (current_rotation > local_rotation_range.y and intent_rotation < local_rotation_range.y):			
+			intent_rotation = local_rotation_range.y + 1
+			has_collided = true 
 
 
 	prev_frame_rotation = intent_rotation
