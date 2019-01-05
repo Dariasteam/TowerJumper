@@ -1,0 +1,4 @@
+- Improve collision detection
+- Fix multiple touchs at once issue 
+- Increment number of platform as level increases
+- Add a few new palettes

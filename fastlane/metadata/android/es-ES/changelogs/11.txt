@@ -1,0 +1,4 @@
+- Detección de colisiones mejorada
+- Mejor gestion de múltiples toques en la pantalla a la vez
+- Los niveles aumentan su longitud a medida que se sube de nivel
+- Nuevas paletas de colores
