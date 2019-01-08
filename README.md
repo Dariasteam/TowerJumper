@@ -21,4 +21,5 @@ Explanation is above in the "comment" string.
 You can test the how the color will look using [this modified version of the game](https://github.com/Dariasteam/TowerJumper/issues/24#issuecomment-452265840)
 
 
+# Credits:
 Font: [Eunomia Regular](https://www.google.com/search?hl=es&q=eunomia%20regular) (CC-0)
