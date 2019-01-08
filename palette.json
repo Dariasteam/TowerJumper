@@ -24,6 +24,8 @@
     ["fbfdf0", "d201af", "a85592"],
     ["27ebe8", "9b0a38", "0c605f"],
     ["fcfff6", "c51eda", "030009"],
+    ["8b64fa", "0b0c38", "2d107e"],
+    
   ],
   "shadow_button_pattern" : {
     "enabled"  : [0, 0, 0, 0, 1, 1, 1, 1],
