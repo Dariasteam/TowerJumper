@@ -54,38 +54,6 @@ custom_constants/vseparation = 10
 custom_constants/hseparation = 10
 columns = 2
 
-[node name="Column_lbl" type="Label" parent="HBoxContainer/GridContainer"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 67.0
-margin/bottom = 31.0
-text = "Column"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="col_edit" type="TextEdit" parent="HBoxContainer/GridContainer"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 77.0
-margin/top = 0.0
-margin/right = 173.0
-margin/bottom = 31.0
-syntax_highlighting = false
-show_line_numbers = false
-highlight_all_occurrences = false
-caret/block_caret = false
-caret/caret_blink = false
-caret/caret_blink_speed = 0.65
-
 [node name="Platform_good_lbl" type="Label" parent="HBoxContainer/GridContainer"]
 
 focus/ignore_mouse = true
@@ -93,10 +61,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 41.0
-margin/right = 67.0
-margin/bottom = 72.0
-text = "Platform A"
+margin/top = 0.0
+margin/right = 49.0
+margin/bottom = 31.0
+text = "Regular"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -107,10 +75,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 77.0
-margin/top = 41.0
+margin/left = 59.0
+margin/top = 0.0
 margin/right = 173.0
-margin/bottom = 72.0
+margin/bottom = 31.0
 syntax_highlighting = false
 show_line_numbers = false
 highlight_all_occurrences = false
@@ -125,10 +93,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 82.0
-margin/right = 67.0
-margin/bottom = 113.0
-text = "Platform B"
+margin/top = 41.0
+margin/right = 49.0
+margin/bottom = 72.0
+text = "Bad"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -139,7 +107,39 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 77.0
+margin/left = 59.0
+margin/top = 41.0
+margin/right = 173.0
+margin/bottom = 72.0
+syntax_highlighting = false
+show_line_numbers = false
+highlight_all_occurrences = false
+caret/block_caret = false
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="Column_lbl" type="Label" parent="HBoxContainer/GridContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 82.0
+margin/right = 49.0
+margin/bottom = 113.0
+text = "Column"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="col_edit" type="TextEdit" parent="HBoxContainer/GridContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 59.0
 margin/top = 82.0
 margin/right = 173.0
 margin/bottom = 113.0
