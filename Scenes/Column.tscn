@@ -20,6 +20,7 @@ transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.27751, 0 )
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script/script = ExtResource( 3 )
+MAX_PLATFORMS = 100
 space = 7
 n_platforms = 30
 

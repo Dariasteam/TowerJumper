@@ -3,6 +3,8 @@ extends Spatial
 var first_platform = preload ("res://Scenes/first_platform.tscn")
 var platform = preload ("res://Scenes/platform.tscn")
 var end_line = preload ("res://Scenes/end_line.tscn")
+export var MAX_PLATFORMS = 100
+
 
 onready var col = get_node ("Column")
 
@@ -18,7 +20,8 @@ func _ready():
 	instance_in(prev_platform, 0)		
 
 	if (global.level > 16):
-		n_platforms += ((global.level - 16) / 3) 
+		n_platforms += ((global.level - 16) / 12) 
+		n_platforms = min(n_platforms, MAX_PLATFORMS)
 		global.level_size = n_platforms
 		
 	col.set_scale(Vector3(col.get_scale().x, n_platforms + n_platforms * 0.0035, col.get_scale().z))

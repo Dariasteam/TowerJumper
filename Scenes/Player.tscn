@@ -745,7 +745,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 ]]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 0.881651, 0.471905, 0, -0.471905, 0.881651, 0.0479576, 6.5581, 17.1744 )
+transform/local = Transform( 1, 0, 0, 0, 0.881651, 0.471905, 0, -0.471905, 0.881651, 0, 6.5581, 17.1744 )
 projection = 0
 fov = 65.0
 near = 0.1
