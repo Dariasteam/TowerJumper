@@ -1,0 +1,1 @@
+Esse é um clone de um jogo popular de Android no qual você move uma bola pulante e tenta alcançar o final de uma torre evitando os obstáculos. Os níveis são gerados aleatoriamente.
