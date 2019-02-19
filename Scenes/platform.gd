@@ -25,7 +25,8 @@ func _ready():
 			aux.set_translation(Vector3(0,rand_range(-0.01, 0.01), 0))
 			aux.set_material (global.mat_regular)
 		elif (rand == 15 and !cant_move):
-			allowed_range = Vector2(rot - offset - 14, rot + 7)
+			var segment_width = offset / 2;
+			allowed_range = Vector2(rot - offset - segment_width, rot - 2)
 			cant_move = true
 			aux = segment_tall.instance()
 			aux.set_material (global.mat_regular)

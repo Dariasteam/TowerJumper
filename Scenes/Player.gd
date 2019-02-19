@@ -143,17 +143,17 @@ func _on_set_rotation (rot):
 			var diff_b = abs(current_rotation - local_rotation_range.y)
 			
 			if (diff_a < diff_b):
-				intent_rotation = rotation_range.x - 1
+				intent_rotation = rotation_range.x - 0.1
 			else:
-				intent_rotation = rotation_range.y + 1 
+				intent_rotation = rotation_range.y + 0.1
 				
 			has_collided = true 		
 		
 		if (current_rotation < local_rotation_range.x and intent_rotation > local_rotation_range.x):
-			intent_rotation = local_rotation_range.x - 1
+			intent_rotation = local_rotation_range.x - 0.1
 			has_collided = true		
 		if (current_rotation > local_rotation_range.y and intent_rotation < local_rotation_range.y):
-			intent_rotation = local_rotation_range.y + 1
+			intent_rotation = local_rotation_range.y + 0.1
 			has_collided = true 
 	
 	set_player_rotation(intent_rotation)
