@@ -73,18 +73,18 @@ func die():
 		die_sound.play(0)
 		
 	big_splash.set_emitting(true)
-	ball.queue_free()
 	area.queue_free()	
+	ball.hide()
 	
-	get_node("Timer").start()
+	get_node("Timer").start()	
 
 func block_camera():
 	rigid_2.set_sleeping(true)
 
 func release_camera():	
-	rigid_2.set_sleeping(false)	
+	rigid_2.set_sleeping(false)
 
-func on_platform_passed():	
+func on_platform_passed():
 	release_camera()
 	rigid_2.set_linear_velocity(rigid.get_linear_velocity())
 		
@@ -101,7 +101,7 @@ func on_platform_passed():
 	if (platforms_counter >= n_platforms_to_meteorize):
 		meteor_particles.set_emitting(true)
 		meteorize()
-					
+
 
 func lock_rot():	
 	last_safe_rotation = axis.get_rotation_deg().y	
@@ -129,7 +129,7 @@ func _on_set_rotation (rot):
 	var current_rotation = axis.get_rotation_deg().y;	
 	var has_collided = false
 		
-	if (movement_limited and ball.get_global_transform().origin.y < rotation_range.z): # check altitude of the ball						
+	if (movement_limited and self != null and ball.get_global_transform().origin.y < rotation_range.z): # check altitude of the ball						
 		var local_rotation_range = Vector2(0,0)
 		
 		if (current_rotation >= 0):
@@ -160,17 +160,7 @@ func _on_set_rotation (rot):
 	set_player_rotation(intent_rotation)
 	return !has_collided
 
-func end_animation():
-	ball.queue_free()	
-	rigid.set_linear_velocity(Vector3(0,0,0))
-	rigid.set_gravity_scale(0)
-	rigid_2.set_linear_velocity(Vector3(0,0,0))
-	rigid_2.set_gravity_scale(0)
-	idle_particles.set_emitting(false)
-	trail.set_emitting(false)
-	
-	die_particles.set_emitting(true)
-	
+
 		
 func _on_Area_body_enter(body):	
 	rigid.set_linear_velocity(Vector3(0,0,0))
