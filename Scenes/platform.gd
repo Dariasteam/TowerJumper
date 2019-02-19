@@ -25,8 +25,8 @@ func _ready():
 			aux.set_translation(Vector3(0,rand_range(-0.01, 0.01), 0))
 			aux.set_material (global.mat_regular)
 		elif (rand == 15 and !cant_move):
-			var segment_width = offset / 2;
-			allowed_range = Vector2(rot - offset - segment_width, rot - 2)
+			var segment_width = offset / 2;			
+			allowed_range = Vector3(rot - offset - segment_width, rot - 2, get_translation().y + get_parent().space)
 			cant_move = true
 			aux = segment_tall.instance()
 			aux.set_material (global.mat_regular)
@@ -52,7 +52,7 @@ func _process(delta):
 	rotate(Vector3(0,1,0), velocity * 0.0003)
 
 func send_next_platform_limits():
-	if (next_platform.allowed_range != Vector2(-1,-1)):		
+	if (next_platform.allowed_range != Vector3(-1,-1,-1)):		
 		global.player.limit_rotation_range(next_platform.allowed_range)
 	else:
 		global.player.unlimit_rotation_range()

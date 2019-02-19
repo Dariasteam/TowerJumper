@@ -7,13 +7,13 @@ var segment = preload ("res://Scenes/Regular_Segment.tscn")
 
 var next_platform
 
-var allowed_range = Vector2(-1,-1)
+var allowed_range = Vector3(-1,-1, -1)
 
 const SEGMENTS = 16
 onready var offset = float(360) / SEGMENTS
 	
 func send_next_platform_limits():
-	if (next_platform.allowed_range != Vector2(-1,-1)):		
+	if (next_platform.allowed_range != Vector3(-1,-1,-1)):		
 		global.player.limit_rotation_range(next_platform.allowed_range)
 	else:
 		global.player.unlimit_rotation_range()
