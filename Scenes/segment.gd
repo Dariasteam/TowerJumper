@@ -17,8 +17,12 @@ func set_bad():
 	get_node("REGULAR/StaticBody").add_to_group("bad")
 	
 func explode():		
-	get_node("REGULAR/StaticBody").queue_free()
-	get_node("REGULAR/AnimationPlayer").play("explode")
+	var a = get_node("REGULAR/StaticBody");
+	if (a != null):
+		a.queue_free()
+	a = get_node("REGULAR/AnimationPlayer");
+	if (a != null):	
+		a.play("explode")
 
 func meteorize():	
 	get_node("REGULAR/StaticBody").queue_free()

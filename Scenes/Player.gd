@@ -119,6 +119,17 @@ func set_player_rotation (value):
 	axis.set_rotation_deg(Vector3(0,value,0))
 	camera_axis.set_rotation_deg(Vector3(0,value,0))
 
+func end_animation():
+	ball.hide()
+	rigid.set_linear_velocity(Vector3(0,0,0))
+	rigid.set_gravity_scale(0)
+	rigid_2.set_linear_velocity(Vector3(0,0,0))
+	rigid_2.set_gravity_scale(0)
+	idle_particles.set_emitting(false)
+	trail.set_emitting(false)
+	
+	die_particles.set_emitting(true)
+	
 
 func is_in_range (v, r_a, r_b):
 	return v > r_a and v < r_b
