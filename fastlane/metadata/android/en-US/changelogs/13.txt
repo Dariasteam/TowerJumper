@@ -1,0 +1,3 @@
+- Fix movement over walls
+- Add a few new palettes
+

@@ -1,0 +1,3 @@
+- Arregla el error de movimiento por encima de los muros
+- Nuevas paletas de colores
+
