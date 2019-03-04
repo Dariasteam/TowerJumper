@@ -25,7 +25,9 @@ func explode():
 		a.play("explode")
 
 func meteorize():	
-	get_node("REGULAR/StaticBody").queue_free()
+	var a = get_node("REGULAR/StaticBody")
+	if (a != null):
+		a.queue_free()
 	var mat = FixedMaterial.new()
 	var color = get_tree().get_nodes_in_group("player")[0].color	
 	mat.set_parameter(FixedMaterial.PARAM_DIFFUSE, color)
