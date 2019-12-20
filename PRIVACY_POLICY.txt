@@ -1,0 +1,1 @@
+This application does not collect any data at all. Since it's free open source software, you can check this claim reviewing the source code at https://github.com/Dariasteam/TowerJumper
